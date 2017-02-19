@@ -1,0 +1,162 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Notification : bbPress\n"
+"Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
+"POT-Creation-Date: 2017-02-19 17:47+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Jakub Mikita <jakub@underdev.it>\n"
+"Language-Team: underDEV <hello@underdev.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
+"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,"
+"_nc:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-1: .git\n"
+
+#: inc/triggers/forums.php:26
+msgid "New forum added"
+msgstr ""
+
+#: inc/triggers/forums.php:27 inc/triggers/forums.php:58
+#: inc/triggers/forums.php:89
+msgid "bbPress : Forum"
+msgstr ""
+
+#: inc/triggers/forums.php:57
+msgid "Forum updated"
+msgstr ""
+
+#: inc/triggers/forums.php:88
+msgid "Forum removed"
+msgstr ""
+
+#: inc/triggers/forums.php:154 inc/triggers/forums.php:171
+#: inc/triggers/forums.php:188 inc/triggers/replies.php:160
+#: inc/triggers/replies.php:177 inc/triggers/replies.php:194
+#: inc/triggers/topics.php:197 inc/triggers/topics.php:214
+#: inc/triggers/topics.php:231 inc/triggers/topics.php:246
+msgid "Howdy!"
+msgstr ""
+
+#: inc/triggers/forums.php:157
+msgid "New forum \"{forum_title}\" has been added."
+msgstr ""
+
+#: inc/triggers/forums.php:159
+msgid "Visit it now at {forum_url}."
+msgstr ""
+
+#: inc/triggers/forums.php:174
+msgid "Forum \"{forum_title}\" has been updated."
+msgstr ""
+
+#: inc/triggers/forums.php:176
+msgid "Check what's new at {forum_url}."
+msgstr ""
+
+#: inc/triggers/forums.php:191
+msgid "Forum \"{forum_title}\" has been removed."
+msgstr ""
+
+#: inc/triggers/replies.php:37
+msgid "New reply added"
+msgstr ""
+
+#: inc/triggers/replies.php:38 inc/triggers/replies.php:73
+#: inc/triggers/replies.php:108
+msgid "bbPress : Reply"
+msgstr ""
+
+#: inc/triggers/replies.php:72
+msgid "Reply updated"
+msgstr ""
+
+#: inc/triggers/replies.php:107
+msgid "Reply removed"
+msgstr ""
+
+#: inc/triggers/replies.php:163
+msgid "New reply in \"{topic_title}\" topic has been published."
+msgstr ""
+
+#: inc/triggers/replies.php:165 inc/triggers/replies.php:182
+msgid "See the reply at {reply_in_topic_url}."
+msgstr ""
+
+#: inc/triggers/replies.php:180
+msgid "Reply in \"{topic_title}\" topic has been updated."
+msgstr ""
+
+#: inc/triggers/replies.php:197
+msgid "Reply in \"{topic_title}\" topic has been removed."
+msgstr ""
+
+#: inc/triggers/replies.php:199
+msgid "See the topic at {topic_url}."
+msgstr ""
+
+#: inc/triggers/topics.php:37
+msgid "New topic added"
+msgstr ""
+
+#: inc/triggers/topics.php:38 inc/triggers/topics.php:73
+#: inc/triggers/topics.php:108 inc/triggers/topics.php:141
+msgid "bbPress : Topic"
+msgstr ""
+
+#: inc/triggers/topics.php:72
+msgid "Topic updated"
+msgstr ""
+
+#: inc/triggers/topics.php:107
+msgid "Topic merged"
+msgstr ""
+
+#: inc/triggers/topics.php:140
+msgid "Topic removed"
+msgstr ""
+
+#: inc/triggers/topics.php:200
+msgid ""
+"New topic \"{topic_title}\" has been created in \"{forum_title}\" forum."
+msgstr ""
+
+#: inc/triggers/topics.php:202
+msgid "Visit it now at {topic_url}."
+msgstr ""
+
+#: inc/triggers/topics.php:217
+msgid "Topic \"{topic_title}\" has been updated."
+msgstr ""
+
+#: inc/triggers/topics.php:219
+msgid "Check what's new at {topic_url}."
+msgstr ""
+
+#: inc/triggers/topics.php:234
+msgid ""
+"Topic \"{source_topic_title}\" has been merged to "
+"\"{destination_topic_title}\"."
+msgstr ""
+
+#: inc/triggers/topics.php:249
+msgid "Topic \"{topic_title}\" has been removed."
+msgstr ""
+
+#: notification-bbpress.php:81
+msgid ""
+"This plugin requires PHP in version at least 5.3 and Notification plugin "
+"active. WordPress itself <a href=\"https://wordpress.org/about/requirements/"
+"\" target=\"_blank\">requires at least PHP 5.6</a>. Please upgrade your PHP "
+"version or contact your Server administrator."
+msgstr ""
