@@ -1,6 +1,6 @@
 # Notification : bbPress
 
-![Notification banner](https://www.wpart.co/img/notification.png)
+![Notification banner](https://www.wpart.co/img/notification-bbpress.png)
 
 This is public repository for Notification : bbPress - the WordPress plugin.
 
