@@ -47,6 +47,9 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
 
+= Next release =
+* [Changed] Main class is now not a Singleton
+
 = 1.0 =
 * Release
 

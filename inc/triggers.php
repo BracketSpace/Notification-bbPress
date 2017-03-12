@@ -5,10 +5,9 @@
 
 namespace Notification\bbPress;
 
-use Notification\Singleton;
 use Notification\bbPress\Triggers;
 
-class Triggers extends Singleton {
+class Triggers {
 
 	public function __construct() {
 

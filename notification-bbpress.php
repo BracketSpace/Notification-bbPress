@@ -63,7 +63,7 @@ function notification_bbpress_initialize() {
 	/**
 	 * Triggers instance
 	 */
-	Notification\bbPress\Triggers::get();
+	new Notification\bbPress\Triggers();
 
 }
 add_action( 'init', 'notification_bbpress_initialize', 10 );
