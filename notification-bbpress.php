@@ -12,34 +12,9 @@ Domain Path: /languages
 */
 
 /**
- * Plugin's autoload function
- * @param  string $class class name
- * @return mixed         false if not plugin's class or void
+ * Composer autoload
  */
-function notification_bbpress_autoload( $class ) {
-
-	$parts = explode( '\\', $class );
-
-	if ( array_shift( $parts ) != 'underDEV' ) {
-		return false;
-	}
-
-	if ( array_shift( $parts ) != 'Notification' ) {
-		return false;
-	}
-
-	if ( array_shift( $parts ) != 'bbPress' ) {
-		return false;
-	}
-
-	$file = trailingslashit( dirname( __FILE__ ) ) . trailingslashit( 'inc' ) . strtolower( implode( '/', $parts ) ) . '.php';
-
-	if ( file_exists( $file ) ) {
-		require_once( $file );
-	}
-
-}
-spl_autoload_register( 'notification_bbpress_autoload' );
+require_once( 'vendor/autoload.php' );
 
 /**
  * Setup plugin
