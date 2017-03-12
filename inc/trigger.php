@@ -4,7 +4,7 @@
  * This class registers all the triggers automatically
  */
 
-namespace Notification\bbPress;
+namespace underDEV\Notification\bbPress;
 
 abstract class Trigger {
 

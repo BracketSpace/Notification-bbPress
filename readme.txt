@@ -49,6 +49,7 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 = Next release =
 * [Changed] Main class is now not a Singleton
+* [Changed] Namespace of the plugin to follow new standard
 
 = 1.0 =
 * Release

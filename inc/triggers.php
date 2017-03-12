@@ -3,9 +3,7 @@
  * Triggers class
  */
 
-namespace Notification\bbPress;
-
-use Notification\bbPress\Triggers;
+namespace underDEV\Notification\bbPress;
 
 class Triggers {
 

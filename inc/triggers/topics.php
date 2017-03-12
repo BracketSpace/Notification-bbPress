@@ -3,9 +3,9 @@
  * Topics triggers class
  */
 
-namespace Notification\bbPress\Triggers;
+namespace underDEV\Notification\bbPress\Triggers;
 
-use Notification\bbPress\Trigger;
+use underDEV\Notification\bbPress\Trigger;
 
 class Topics extends Trigger {
 

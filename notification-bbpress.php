@@ -20,6 +20,10 @@ function notification_bbpress_autoload( $class ) {
 
 	$parts = explode( '\\', $class );
 
+	if ( array_shift( $parts ) != 'underDEV' ) {
+		return false;
+	}
+
 	if ( array_shift( $parts ) != 'Notification' ) {
 		return false;
 	}
@@ -63,7 +67,7 @@ function notification_bbpress_initialize() {
 	/**
 	 * Triggers instance
 	 */
-	new Notification\bbPress\Triggers();
+	new underDEV\Notification\bbPress\Triggers();
 
 }
 add_action( 'init', 'notification_bbpress_initialize', 10 );
