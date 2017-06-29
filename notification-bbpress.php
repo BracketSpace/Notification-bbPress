@@ -5,37 +5,16 @@ Description: bbPress triggers for Notification plugin
 Plugin URI: https://notification.underdev.it
 Author: underDEV
 Author URI: https://underdev.it
-Version: 1.0
+Version: 1.1
 License: GPL3
 Text Domain: notification-bbpress
 Domain Path: /languages
 */
 
 /**
- * Plugin's autoload function
- * @param  string $class class name
- * @return mixed         false if not plugin's class or void
+ * Composer autoload
  */
-function notification_bbpress_autoload( $class ) {
-
-	$parts = explode( '\\', $class );
-
-	if ( array_shift( $parts ) != 'Notification' ) {
-		return false;
-	}
-
-	if ( array_shift( $parts ) != 'bbPress' ) {
-		return false;
-	}
-
-	$file = trailingslashit( dirname( __FILE__ ) ) . trailingslashit( 'inc' ) . strtolower( implode( '/', $parts ) ) . '.php';
-
-	if ( file_exists( $file ) ) {
-		require_once( $file );
-	}
-
-}
-spl_autoload_register( 'notification_bbpress_autoload' );
+require_once( 'vendor/autoload.php' );
 
 /**
  * Setup plugin
@@ -63,7 +42,7 @@ function notification_bbpress_initialize() {
 	/**
 	 * Triggers instance
 	 */
-	Notification\bbPress\Triggers::get();
+	new underDEV\Notification\bbPress\Triggers();
 
 }
 add_action( 'init', 'notification_bbpress_initialize', 10 );
