@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/underDEV/
 Tags: notification, notify, email, mail, bbpress, forum
 Requires at least: 3.6
 Tested up to: 4.8
-Stable tag: 1.1
+Stable tag: 1.1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,6 +46,9 @@ This plugin require at least PHP 5.3.0.
 Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
+
+= 1.1.1 =
+* [Fixed] Error with wrong directory name
 
 = 1.1 =
 * [Changed] Main class is now not a Singleton
