@@ -5,7 +5,7 @@ Description: bbPress triggers for Notification plugin
 Plugin URI: https://notification.underdev.it
 Author: underDEV
 Author URI: https://underdev.it
-Version: 1.0
+Version: 1.1
 License: GPL3
 Text Domain: notification-bbpress
 Domain Path: /languages
