@@ -1,65 +1,167 @@
 <?php
-/*
-Plugin Name: Notification : bbPress
-Description: bbPress triggers for Notification plugin
-Plugin URI: https://notification.underdev.it
-Author: underDEV
-Author URI: https://underdev.it
-Version: 1.1.1
-License: GPL3
-Text Domain: notification-bbpress
-Domain Path: /languages
-*/
+/**
+ * Plugin Name: Notification : bbPress
+ * Description: bbPress triggers for Notification plugin
+ * Plugin URI: https://notification.underdev.it
+ * Author: underDEV
+ * Author URI: https://underdev.it
+ * Version: 1.1.1
+ * License: GPL3
+ * Text Domain: notification-bbpress
+ * Domain Path: /languages
+ *
+ * @package notification/bbpress
+ */
 
 /**
- * Composer autoload
+ * Plugin's autoload function
+ *
+ * @param  string $class class name.
+ * @return mixed         false if not plugin's class or void
  */
-require_once( 'vendor/autoload.php' );
+function notification_bbpress_autoload( $class ) {
 
-/**
- * Setup plugin
- * @return void
- */
-function notification_bbpress_plugin_setup() {
+	$parts = explode( '\\', $class );
 
-	load_plugin_textdomain( 'notification-bbpress', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	if ( array_shift( $parts ) != 'underDEV' ) {
+		return false;
+	}
+
+	if ( array_shift( $parts ) != 'Notification' ) {
+		return false;
+	}
+
+	if ( array_shift( $parts ) != 'bbPress' ) {
+		return false;
+	}
+
+	$file = trailingslashit( dirname( __FILE__ ) ) . trailingslashit( 'class' ) . implode( '/', $parts ) . '.php';
+
+	if ( file_exists( $file ) ) {
+		require_once $file;
+	}
 
 }
-add_action( 'plugins_loaded', 'notification_bbpress_plugin_setup' );
+spl_autoload_register( 'notification_bbpress_autoload' );
 
 /**
- * Initialize plugin
- * @return void
+ * Boot up the plugin in theme's action just in case the Notification
+ * is used as a bundle.
  */
-function notification_bbpress_initialize() {
+add_action( 'after_setup_theme', function() {
 
-	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	/**
+	 * Requirements check
+	 */
+	$requirements = new underDEV\Notification\bbPress\Utils\Requirements( __( 'Notification : bbPress', 'notification-bbpress' ), array(
+		'php'          => '5.3',
+		'wp'           => '4.6',
+		'notification' => true,
+		'plugins'      => array(
+			'bbpress/bbpress.php'   => array( 'name' => 'bbPress', 'version' => '0' ),
+		),
+	) );
 
-	if ( ! is_plugin_active( 'bbpress/bbpress.php' ) ) {
+	/**
+	 * Tests if Notification plugin is active
+	 * We have to do it like this in case the plugin
+	 * is loaded as a bundle.
+	 *
+	 * @param string $comparsion value to test.
+	 * @param object $r          requirements.
+	 * @return void
+	 */
+	function notification_bbpress_check_base_plugin( $comparsion, $r ) {
+		if ( $comparsion === true && ! function_exists( 'notification_runtime' ) ) {
+			$r->add_error( __( 'Notification plugin active', 'notification-bbpress' ) );
+		}
+	}
+
+	$requirements->add_check( 'notification', 'notification_bbpress_check_base_plugin' );
+
+	if ( ! $requirements->satisfied() ) {
+		add_action( 'admin_notices', array( $requirements, 'notice' ) );
 		return;
 	}
 
 	/**
-	 * Triggers instance
+	 * Remove bbPress Post Types from Post Types select in Notification Settings
 	 */
-	new underDEV\Notification\bbPress\Triggers();
+	add_filter( 'notification/settings/triggers/valid_post_types', function( $post_types ) {
 
-}
-add_action( 'init', 'notification_bbpress_initialize', 10 );
+		if ( isset( $post_types[ bbp_get_forum_post_type() ] ) ) {
+			unset( $post_types[ bbp_get_forum_post_type() ] );
+		}
 
-/**
- * Do some check on plugin activation
- * @return void
- */
-function notification_bbpress_activation() {
+		if ( isset( $post_types[ bbp_get_topic_post_type() ] ) ) {
+			unset( $post_types[ bbp_get_topic_post_type() ] );
+		}
 
-	if ( version_compare( PHP_VERSION, '5.3', '<' ) || ! is_plugin_active( 'notification/notification.php' ) ) {
+		if ( isset( $post_types[ bbp_get_reply_post_type() ] ) ) {
+			unset( $post_types[ bbp_get_reply_post_type() ] );
+		}
 
-		deactivate_plugins( plugin_basename( __FILE__ ) );
+		return $post_types;
 
-		wp_die( __( 'This plugin requires PHP in version at least 5.3 and Notification plugin active. WordPress itself <a href="https://wordpress.org/about/requirements/" target="_blank">requires at least PHP 5.6</a>. Please upgrade your PHP version or contact your Server administrator.', 'notification-bbpress' ) );
+	} );
 
+	/**
+	 * Add bbPress Triggers checkboxes to Trigger Settings
+	 */
+	notification_register_settings( function( $settings ) {
+
+		$triggers = $settings->add_section( __( 'Triggers', 'notification' ), 'triggers' );
+
+		$triggers->add_group( __( 'bbPress', 'notification-bbpress' ), 'bbpress' )
+			->add_field( array(
+				'name'     => __( 'Forum', 'notification-bbpress' ),
+				'slug'     => 'forum_enable',
+				'default'  => false,
+				'addons'   => array(
+					'label' => __( 'Enable Forum triggers', 'notification-bbpress' ),
+				),
+				'render'   => array( new underDEV\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new underDEV\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+			) )
+			->add_field( array(
+				'name'     => __( 'Topic', 'notification-bbpress' ),
+				'slug'     => 'topic_enable',
+				'default'  => false,
+				'addons'   => array(
+					'label' => __( 'Enable Topic triggers', 'notification-bbpress' ),
+				),
+				'render'   => array( new underDEV\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new underDEV\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+			) )
+			->add_field( array(
+				'name'     => __( 'Reply', 'notification-bbpress' ),
+				'slug'     => 'reply_enable',
+				'default'  => false,
+				'addons'   => array(
+					'label' => __( 'Enable Reply triggers', 'notification-bbpress' ),
+				),
+				'render'   => array( new underDEV\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new underDEV\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+			) );
+
+	}, 1000 );
+
+	/**
+	 * Register triggers
+	 */
+
+	if ( notification_get_setting( 'triggers/bbpress/forum_enable' ) ) {
+		register_trigger( new underDEV\Notification\bbPress\Trigger\Forum\Added() );
+		register_trigger( new underDEV\Notification\bbPress\Trigger\Forum\Updated() );
+		register_trigger( new underDEV\Notification\bbPress\Trigger\Forum\Removed() );
 	}
 
-}
-register_activation_hook( __FILE__, 'notification_bbpress_activation' );
+	if ( notification_get_setting( 'triggers/bbpress/topic_enable' ) ) {
+		$tr = '';
+	}
+
+	if ( notification_get_setting( 'triggers/bbpress/reply_enable' ) ) {
+		$tr = '';
+	}
+
+} );
