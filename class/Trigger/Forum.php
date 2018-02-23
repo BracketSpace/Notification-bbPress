@@ -150,37 +150,37 @@ abstract class Forum extends Abstracts\Trigger {
 
 		$this->add_merge_tag( new MergeTag\User\UserID( array(
 			'slug'          => 'forum_author_ID',
-			'name'          => __( 'Forum author user ID' ),
+			'name'          => __( 'Forum author user ID', 'notification-bbpress' ),
 			'property_name' => 'author',
 		) ) );
 
     	$this->add_merge_tag( new MergeTag\User\UserLogin( array(
 			'slug'          => 'forum_author_login',
-			'name'          => __( 'Forum author user login'  ),
+			'name'          => __( 'Forum author user login' , 'notification-bbpress' ),
 			'property_name' => 'author',
 		) ) );
 
         $this->add_merge_tag( new MergeTag\User\UserEmail( array(
 			'slug'          => 'forum_author_email',
-			'name'          => __( 'Forum author user email' ),
+			'name'          => __( 'Forum author user email', 'notification-bbpress' ),
 			'property_name' => 'author',
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserNicename( array(
 			'slug'          => 'forum_author_nicename',
-			'name'          => __( 'Forum author user nicename' ),
+			'name'          => __( 'Forum author user nicename', 'notification-bbpress' ),
 			'property_name' => 'author',
 		) ) );
 
         $this->add_merge_tag( new MergeTag\User\UserFirstName( array(
 			'slug'          => 'forum_author_firstname',
-			'name'          => __( 'Forum author user first name' ),
+			'name'          => __( 'Forum author user first name', 'notification-bbpress' ),
 			'property_name' => 'author',
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( array(
 			'slug'          => 'forum_author_lastname',
-			'name'          => __( 'Forum author user last name' ),
+			'name'          => __( 'Forum author user last name', 'notification-bbpress' ),
 			'property_name' => 'author',
 		) ) );
 
