@@ -157,7 +157,10 @@ add_action( 'after_setup_theme', function() {
 	}
 
 	if ( notification_get_setting( 'triggers/bbpress/topic_enable' ) ) {
-		$tr = '';
+		register_trigger( new underDEV\Notification\bbPress\Trigger\Topic\Created() );
+		register_trigger( new underDEV\Notification\bbPress\Trigger\Topic\Merged() );
+		register_trigger( new underDEV\Notification\bbPress\Trigger\Topic\Updated() );
+		register_trigger( new underDEV\Notification\bbPress\Trigger\Topic\Removed() );
 	}
 
 	if ( notification_get_setting( 'triggers/bbpress/reply_enable' ) ) {
