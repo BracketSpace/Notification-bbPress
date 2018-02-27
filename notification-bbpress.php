@@ -164,7 +164,9 @@ add_action( 'after_setup_theme', function() {
 	}
 
 	if ( notification_get_setting( 'triggers/bbpress/reply_enable' ) ) {
-		$tr = '';
+		register_trigger( new underDEV\Notification\bbPress\Trigger\Reply\Created() );
+		register_trigger( new underDEV\Notification\bbPress\Trigger\Reply\Updated() );
+		register_trigger( new underDEV\Notification\bbPress\Trigger\Reply\Removed() );
 	}
 
 } );
