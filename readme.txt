@@ -1,39 +1,68 @@
 === Notification : bbPress ===
-Contributors: Kubitomakita
+Contributors: notification, bracketspace, Kubitomakita
 Donate link: https://www.paypal.me/underDEV/
-Tags: notification, notify, email, mail, signature
+Tags: notification, notify, email, mail, bbpress, forum, trigger
 Requires at least: 3.6
 Tested up to: 4.8
-Stable tag: 1.0
+Stable tag: 2.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Short description
+bbPress triggers for Notification plugin
 
 == Description ==
 
-Long description for extension for [Notification plugin](https://wordpress.org/plugins/notification/).
+This an addon with triggers for the [Notification](https://wordpress.org/plugins/notification/) plugin.
+
+= Available triggers =
+
+Forum:
+
+* Forum added
+* Forum updated
+* Forum removed
+
+Topic:
+
+* New topic added
+* Topic updated
+* Topic merged
+* Topic removed
+
+Reply:
+
+* New reply added
+* Reply updated
+* Reply removed
 
 == Installation ==
 
 = Requirements =
 
-This plugin requires at least PHP 5.3.0.
+This plugin require at least PHP 5.3.0.
 
 = Plugin install =
 
 Download and install this plugin from Plugins -> Add New admin screen.
 
-== Screenshots ==
-
-1. xxx
-
 == Changelog ==
 
-= 1.0.0 =
+= 2.0.0 =
+* Plugin compatibility with Notification 5.0.0
+
+= 1.1.1 =
+* [Fixed] Error with wrong directory name
+
+= 1.1 =
+* [Changed] Main class is now not a Singleton
+* [Changed] Namespace of the plugin to follow new standard
+* [Changed] Autoloader function to Composer's autoload
+
+= 1.0 =
 * Release
 
 == Upgrade Notice ==
 
-= 1.0.0 =
+= 1.0 =
 * Release
+
