@@ -7,10 +7,10 @@
  * @package notification/bbpress
  */
 
-namespace underDEV\Notification\bbPress\Utils\Cache;
+namespace BracketSpace\Notification\bbPress\Utils\Cache;
 
-use underDEV\Notification\bbPress\Utils\Cache\Cache;
-use underDEV\Notification\bbPress\Utils\Interfaces\Cacheable;
+use BracketSpace\Notification\bbPress\Utils\Cache\Cache;
+use BracketSpace\Notification\bbPress\Utils\Interfaces\Cacheable;
 
 /**
  * Transient cache

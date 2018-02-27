@@ -3,7 +3,7 @@
  * Plugin Name: Notification : bbPress
  * Description: bbPress triggers for Notification plugin
  * Plugin URI: https://notification.underdev.it
- * Author: underDEV
+ * Author: BracketSpace
  * Author URI: https://underdev.it
  * Version: 1.1.1
  * License: GPL3
@@ -23,7 +23,7 @@ function notification_bbpress_autoload( $class ) {
 
 	$parts = explode( '\\', $class );
 
-	if ( array_shift( $parts ) != 'underDEV' ) {
+	if ( array_shift( $parts ) != 'BracketSpace' ) {
 		return false;
 	}
 
@@ -53,7 +53,7 @@ add_action( 'after_setup_theme', function() {
 	/**
 	 * Requirements check
 	 */
-	$requirements = new underDEV\Notification\bbPress\Utils\Requirements( __( 'Notification : bbPress', 'notification-bbpress' ), array(
+	$requirements = new BracketSpace\Notification\bbPress\Utils\Requirements( __( 'Notification : bbPress', 'notification-bbpress' ), array(
 		'php'          => '5.3',
 		'wp'           => '4.6',
 		'notification' => true,
@@ -120,8 +120,8 @@ add_action( 'after_setup_theme', function() {
 				'addons'   => array(
 					'label' => __( 'Enable Forum triggers', 'notification-bbpress' ),
 				),
-				'render'   => array( new underDEV\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
-				'sanitize' => array( new underDEV\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+				'render'   => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
 			) )
 			->add_field( array(
 				'name'     => __( 'Topic', 'notification-bbpress' ),
@@ -130,8 +130,8 @@ add_action( 'after_setup_theme', function() {
 				'addons'   => array(
 					'label' => __( 'Enable Topic triggers', 'notification-bbpress' ),
 				),
-				'render'   => array( new underDEV\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
-				'sanitize' => array( new underDEV\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+				'render'   => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
 			) )
 			->add_field( array(
 				'name'     => __( 'Reply', 'notification-bbpress' ),
@@ -140,8 +140,8 @@ add_action( 'after_setup_theme', function() {
 				'addons'   => array(
 					'label' => __( 'Enable Reply triggers', 'notification-bbpress' ),
 				),
-				'render'   => array( new underDEV\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
-				'sanitize' => array( new underDEV\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+				'render'   => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
 			) );
 
 	}, 1000 );
@@ -151,22 +151,22 @@ add_action( 'after_setup_theme', function() {
 	 */
 
 	if ( notification_get_setting( 'triggers/bbpress/forum_enable' ) ) {
-		register_trigger( new underDEV\Notification\bbPress\Trigger\Forum\Added() );
-		register_trigger( new underDEV\Notification\bbPress\Trigger\Forum\Updated() );
-		register_trigger( new underDEV\Notification\bbPress\Trigger\Forum\Removed() );
+		register_trigger( new BracketSpace\Notification\bbPress\Trigger\Forum\Added() );
+		register_trigger( new BracketSpace\Notification\bbPress\Trigger\Forum\Updated() );
+		register_trigger( new BracketSpace\Notification\bbPress\Trigger\Forum\Removed() );
 	}
 
 	if ( notification_get_setting( 'triggers/bbpress/topic_enable' ) ) {
-		register_trigger( new underDEV\Notification\bbPress\Trigger\Topic\Created() );
-		register_trigger( new underDEV\Notification\bbPress\Trigger\Topic\Merged() );
-		register_trigger( new underDEV\Notification\bbPress\Trigger\Topic\Updated() );
-		register_trigger( new underDEV\Notification\bbPress\Trigger\Topic\Removed() );
+		register_trigger( new BracketSpace\Notification\bbPress\Trigger\Topic\Created() );
+		register_trigger( new BracketSpace\Notification\bbPress\Trigger\Topic\Merged() );
+		register_trigger( new BracketSpace\Notification\bbPress\Trigger\Topic\Updated() );
+		register_trigger( new BracketSpace\Notification\bbPress\Trigger\Topic\Removed() );
 	}
 
 	if ( notification_get_setting( 'triggers/bbpress/reply_enable' ) ) {
-		register_trigger( new underDEV\Notification\bbPress\Trigger\Reply\Created() );
-		register_trigger( new underDEV\Notification\bbPress\Trigger\Reply\Updated() );
-		register_trigger( new underDEV\Notification\bbPress\Trigger\Reply\Removed() );
+		register_trigger( new BracketSpace\Notification\bbPress\Trigger\Reply\Created() );
+		register_trigger( new BracketSpace\Notification\bbPress\Trigger\Reply\Updated() );
+		register_trigger( new BracketSpace\Notification\bbPress\Trigger\Reply\Removed() );
 	}
 
 } );

@@ -5,10 +5,10 @@
  * @package notification
  */
 
-namespace underDEV\Notification\bbPress\Trigger\Reply;
+namespace BracketSpace\Notification\bbPress\Trigger\Reply;
 
-use underDEV\Notification\bbPress\Trigger\Reply as ReplyTrigger;
-use underDEV\Notification\Defaults\MergeTag;
+use BracketSpace\Notification\bbPress\Trigger\Reply as ReplyTrigger;
+use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
  * Reply updated trigger class

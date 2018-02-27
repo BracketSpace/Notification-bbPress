@@ -6,7 +6,7 @@
  * @package notification/bbpress
  */
 
-namespace underDEV\Notification\bbPress\Utils\Interfaces;
+namespace BracketSpace\Notification\bbPress\Utils\Interfaces;
 
 /**
  * Cacheable interface

@@ -5,7 +5,7 @@
  * @package notification/bbpress
  */
 
-namespace underDEV\Notification\bbPress\Utils\Cache;
+namespace BracketSpace\Notification\bbPress\Utils\Cache;
 
 /**
  * Cache class

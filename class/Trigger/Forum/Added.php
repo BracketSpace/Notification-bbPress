@@ -5,10 +5,10 @@
  * @package notification
  */
 
-namespace underDEV\Notification\bbPress\Trigger\Forum;
+namespace BracketSpace\Notification\bbPress\Trigger\Forum;
 
-use underDEV\Notification\bbPress\Trigger\Forum as ForumTrigger;
-use underDEV\Notification\Defaults\MergeTag;
+use BracketSpace\Notification\bbPress\Trigger\Forum as ForumTrigger;
+use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
  * Forum added trigger class

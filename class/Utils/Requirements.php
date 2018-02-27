@@ -8,7 +8,7 @@
  * @package notification/bbpress
  */
 
-namespace underDEV\Notification\bbPress\Utils;
+namespace BracketSpace\Notification\bbPress\Utils;
 
 /**
  * Requirements class

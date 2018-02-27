@@ -5,9 +5,9 @@
  * @package notification/bbpress
  */
 
-namespace underDEV\Notification\bbPress\Utils\Settings;
+namespace BracketSpace\Notification\bbPress\Utils\Settings;
 
-use underDEV\Notification\bbPress\Utils\Settings\Section;
+use BracketSpace\Notification\bbPress\Utils\Settings\Section;
 
 /**
  * Group class

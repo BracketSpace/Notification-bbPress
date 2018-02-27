@@ -5,10 +5,10 @@
  * @package notification
  */
 
-namespace underDEV\Notification\bbPress\Trigger\Topic;
+namespace BracketSpace\Notification\bbPress\Trigger\Topic;
 
-use underDEV\Notification\bbPress\Trigger\Topic as TopicTrigger;
-use underDEV\Notification\Defaults\MergeTag;
+use BracketSpace\Notification\bbPress\Trigger\Topic as TopicTrigger;
+use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
  * Topic removed trigger class

@@ -5,7 +5,7 @@
  * @package notification/bbpress
  */
 
-namespace underDEV\Notification\bbPress\Utils\Settings;
+namespace BracketSpace\Notification\bbPress\Utils\Settings;
 
 /**
  * Settings class

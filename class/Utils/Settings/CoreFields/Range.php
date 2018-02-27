@@ -5,7 +5,7 @@
  * @package notification/bbpress
  */
 
-namespace underDEV\Notification\bbPress\Utils\Settings\CoreFields;
+namespace BracketSpace\Notification\bbPress\Utils\Settings\CoreFields;
 
 /**
  * Range class
