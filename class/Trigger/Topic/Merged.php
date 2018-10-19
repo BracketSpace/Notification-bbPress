@@ -21,8 +21,8 @@ class Merged extends TopicTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug'      => 'bbpress/topic/merged',
-			'name'      => __( 'Topic merged', 'notification-bbpress' ),
+			'slug' => 'bbpress/topic/merged',
+			'name' => __( 'Topic merged', 'notification-bbpress' ),
 		) );
 
 		$this->add_action( 'bbp_merged_topic', 10, 1 );
@@ -40,7 +40,7 @@ class Merged extends TopicTrigger {
 		$this->dest_topic   = get_post( $this->callback_args[0] );
 		$this->source_topic = get_post( $this->callback_args[1] );
 
-		$forum_id = get_post_meta( $this->dest_topic->ID, '_bbp_forum_id', true );
+		$forum_id    = get_post_meta( $this->dest_topic->ID, '_bbp_forum_id', true );
 		$this->forum = get_post( $forum_id );
 
 		$this->dest_topic_author   = get_userdata( $this->dest_topic->post_author );
@@ -89,13 +89,13 @@ class Merged extends TopicTrigger {
 			'property_name' => 'dest_topic_author',
 		) ) );
 
-    	$this->add_merge_tag( new MergeTag\User\UserLogin( array(
+		$this->add_merge_tag( new MergeTag\User\UserLogin( array(
 			'slug'          => 'dest_topic_author_login',
-			'name'          => __( 'Destination topic author user login' , 'notification-bbpress' ),
+			'name'          => __( 'Destination topic author user login', 'notification-bbpress' ),
 			'property_name' => 'dest_topic_author',
 		) ) );
 
-        $this->add_merge_tag( new MergeTag\User\UserEmail( array(
+		$this->add_merge_tag( new MergeTag\User\UserEmail( array(
 			'slug'          => 'dest_topic_author_email',
 			'name'          => __( 'Destination topic author user email', 'notification-bbpress' ),
 			'property_name' => 'dest_topic_author',
@@ -107,7 +107,7 @@ class Merged extends TopicTrigger {
 			'property_name' => 'dest_topic_author',
 		) ) );
 
-        $this->add_merge_tag( new MergeTag\User\UserFirstName( array(
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( array(
 			'slug'          => 'dest_topic_author_firstname',
 			'name'          => __( 'Destination topic author user first name', 'notification-bbpress' ),
 			'property_name' => 'dest_topic_author',
@@ -118,8 +118,6 @@ class Merged extends TopicTrigger {
 			'name'          => __( 'Destination topic author user last name', 'notification-bbpress' ),
 			'property_name' => 'dest_topic_author',
 		) ) );
-
-
 
 		$this->add_merge_tag( new MergeTag\Post\PostID( array(
 			'post_type' => 'source_topic',
@@ -153,13 +151,13 @@ class Merged extends TopicTrigger {
 			'property_name' => 'source_topic_author',
 		) ) );
 
-    	$this->add_merge_tag( new MergeTag\User\UserLogin( array(
+		$this->add_merge_tag( new MergeTag\User\UserLogin( array(
 			'slug'          => 'source_topic_author_login',
-			'name'          => __( 'Source topic author user login' , 'notification-bbpress' ),
+			'name'          => __( 'Source topic author user login', 'notification-bbpress' ),
 			'property_name' => 'source_topic_author',
 		) ) );
 
-        $this->add_merge_tag( new MergeTag\User\UserEmail( array(
+		$this->add_merge_tag( new MergeTag\User\UserEmail( array(
 			'slug'          => 'source_topic_author_email',
 			'name'          => __( 'Source topic author user email', 'notification-bbpress' ),
 			'property_name' => 'source_topic_author',
@@ -171,7 +169,7 @@ class Merged extends TopicTrigger {
 			'property_name' => 'source_topic_author',
 		) ) );
 
-        $this->add_merge_tag( new MergeTag\User\UserFirstName( array(
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( array(
 			'slug'          => 'source_topic_author_firstname',
 			'name'          => __( 'Source topic author user first name', 'notification-bbpress' ),
 			'property_name' => 'source_topic_author',
@@ -183,14 +181,10 @@ class Merged extends TopicTrigger {
 			'property_name' => 'source_topic_author',
 		) ) );
 
-
-
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug' => 'topic_merge_datetime',
 			'name' => __( 'Topic merge date and time', 'notification-bbpress' ),
 		) ) );
-
-
 
 		$this->add_merge_tag( new MergeTag\Post\PostID( array(
 			'post_type' => 'forum',
@@ -207,6 +201,6 @@ class Merged extends TopicTrigger {
 			'name'      => __( 'Forum title', 'notification-bbpress' ),
 		) ) );
 
-    }
+	}
 
 }

@@ -21,8 +21,8 @@ class Created extends ReplyTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug'      => 'bbpress/reply/created',
-			'name'      => __( 'New reply created', 'notification-bbpress' ),
+			'slug' => 'bbpress/reply/created',
+			'name' => __( 'New reply created', 'notification-bbpress' ),
 		) );
 
 		$this->add_action( 'bbp_new_reply_post_extras', 1000, 1 );
@@ -41,9 +41,9 @@ class Created extends ReplyTrigger {
 
 		$this->meta = get_post_meta( $reply_id );
 
-		$this->reply  = get_post( $reply_id );
-		$this->topic  = get_post( $this->meta['_bbp_topic_id'][0] );
-		$this->forum  = get_post( $this->meta['_bbp_forum_id'][0] );
+		$this->reply = get_post( $reply_id );
+		$this->topic = get_post( $this->meta['_bbp_topic_id'][0] );
+		$this->forum = get_post( $this->meta['_bbp_forum_id'][0] );
 
 		$this->topic_meta = get_post_meta( $this->topic->ID );
 

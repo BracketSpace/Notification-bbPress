@@ -21,8 +21,8 @@ class Updated extends TopicTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug'      => 'bbpress/topic/updated',
-			'name'      => __( 'Topic updated', 'notification-bbpress' ),
+			'slug' => 'bbpress/topic/updated',
+			'name' => __( 'Topic updated', 'notification-bbpress' ),
 		) );
 
 		$this->add_action( 'bbp_edit_topic_post_extras', 10, 1 );

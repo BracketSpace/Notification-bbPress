@@ -21,8 +21,8 @@ class Removed extends TopicTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug'      => 'bbpress/topic/removed',
-			'name'      => __( 'Topic removed', 'notification-bbpress' ),
+			'slug' => 'bbpress/topic/removed',
+			'name' => __( 'Topic removed', 'notification-bbpress' ),
 		) );
 
 		$this->add_action( 'trash_' . bbp_get_topic_post_type(), 10, 2 );

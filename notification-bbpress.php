@@ -5,7 +5,7 @@
  * Plugin URI: https://notification.underdev.it
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 2.0.0
+ * Version: 2.0.1
  * License: GPL3
  * Text Domain: notification-bbpress
  * Domain Path: /languages
@@ -23,15 +23,15 @@ function notification_bbpress_autoload( $class ) {
 
 	$parts = explode( '\\', $class );
 
-	if ( array_shift( $parts ) != 'BracketSpace' ) {
+	if ( array_shift( $parts ) !== 'BracketSpace' ) {
 		return false;
 	}
 
-	if ( array_shift( $parts ) != 'Notification' ) {
+	if ( array_shift( $parts ) !== 'Notification' ) {
 		return false;
 	}
 
-	if ( array_shift( $parts ) != 'bbPress' ) {
+	if ( array_shift( $parts ) !== 'bbPress' ) {
 		return false;
 	}
 
@@ -58,7 +58,10 @@ add_action( 'after_setup_theme', function() {
 		'wp'           => '4.6',
 		'notification' => true,
 		'plugins'      => array(
-			'bbpress/bbpress.php'   => array( 'name' => 'bbPress', 'version' => '0' ),
+			'bbpress/bbpress.php' => array(
+				'name'    => 'bbPress',
+				'version' => '0',
+			),
 		),
 	) );
 
@@ -72,7 +75,7 @@ add_action( 'after_setup_theme', function() {
 	 * @return void
 	 */
 	function notification_bbpress_check_base_plugin( $comparsion, $r ) {
-		if ( $comparsion === true && ! function_exists( 'notification_runtime' ) ) {
+		if ( true === $comparsion && ! function_exists( 'notification_runtime' ) ) {
 			$r->add_error( __( 'Notification plugin active', 'notification-bbpress' ) );
 		}
 	}
@@ -116,32 +119,32 @@ add_action( 'after_setup_theme', function() {
 			->add_field( array(
 				'name'     => __( 'Forum', 'notification-bbpress' ),
 				'slug'     => 'forum_enable',
-				'default'  => false,
+				'default'  => true,
 				'addons'   => array(
 					'label' => __( 'Enable Forum triggers', 'notification-bbpress' ),
 				),
-				'render'   => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
-				'sanitize' => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+				'render'   => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
 			) )
 			->add_field( array(
 				'name'     => __( 'Topic', 'notification-bbpress' ),
 				'slug'     => 'topic_enable',
-				'default'  => false,
+				'default'  => true,
 				'addons'   => array(
 					'label' => __( 'Enable Topic triggers', 'notification-bbpress' ),
 				),
-				'render'   => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
-				'sanitize' => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+				'render'   => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
 			) )
 			->add_field( array(
 				'name'     => __( 'Reply', 'notification-bbpress' ),
 				'slug'     => 'reply_enable',
-				'default'  => false,
+				'default'  => true,
 				'addons'   => array(
 					'label' => __( 'Enable Reply triggers', 'notification-bbpress' ),
 				),
-				'render'   => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
-				'sanitize' => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+				'render'   => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
 			) );
 
 	}, 1000 );

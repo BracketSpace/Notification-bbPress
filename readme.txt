@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/underDEV/
 Tags: notification, notify, email, mail, bbpress, forum, trigger
 Requires at least: 3.6
 Tested up to: 4.8
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,6 +46,10 @@ This plugin require at least PHP 5.3.0.
 Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
+
+= 2.0.1 =
+* PHP 7.2 compatibility
+* WordPress Coding Standards compatibility
 
 = 2.0.0 =
 * Plugin compatibility with Notification 5.0.0

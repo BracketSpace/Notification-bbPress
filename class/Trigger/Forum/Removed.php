@@ -21,8 +21,8 @@ class Removed extends ForumTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug'      => 'bbpress/forum/removed',
-			'name'      => __( 'Forum removed', 'notification-bbpress' ),
+			'slug' => 'bbpress/forum/removed',
+			'name' => __( 'Forum removed', 'notification-bbpress' ),
 		) );
 
 		$this->add_action( 'trash_' . bbp_get_forum_post_type(), 10, 2 );
@@ -38,7 +38,7 @@ class Removed extends ForumTrigger {
 	public function action() {
 
 		// WP_Post object.
-		$this->forum  = $this->callback_args[1];
+		$this->forum = $this->callback_args[1];
 
 		$this->meta                      = get_post_meta( $this->forum->ID );
 		$this->forum_creation_datetime   = strtotime( $this->forum->post_date );
