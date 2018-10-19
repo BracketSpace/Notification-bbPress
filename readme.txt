@@ -47,6 +47,9 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
 
+= [Next] =
+* PHP 7.2 compatibility
+
 = 2.0.0 =
 * Plugin compatibility with Notification 5.0.0
 

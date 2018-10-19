@@ -116,32 +116,32 @@ add_action( 'after_setup_theme', function() {
 			->add_field( array(
 				'name'     => __( 'Forum', 'notification-bbpress' ),
 				'slug'     => 'forum_enable',
-				'default'  => false,
+				'default'  => true,
 				'addons'   => array(
 					'label' => __( 'Enable Forum triggers', 'notification-bbpress' ),
 				),
-				'render'   => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
-				'sanitize' => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+				'render'   => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
 			) )
 			->add_field( array(
 				'name'     => __( 'Topic', 'notification-bbpress' ),
 				'slug'     => 'topic_enable',
-				'default'  => false,
+				'default'  => true,
 				'addons'   => array(
 					'label' => __( 'Enable Topic triggers', 'notification-bbpress' ),
 				),
-				'render'   => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
-				'sanitize' => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+				'render'   => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
 			) )
 			->add_field( array(
 				'name'     => __( 'Reply', 'notification-bbpress' ),
 				'slug'     => 'reply_enable',
-				'default'  => false,
+				'default'  => true,
 				'addons'   => array(
 					'label' => __( 'Enable Reply triggers', 'notification-bbpress' ),
 				),
-				'render'   => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'input' ),
-				'sanitize' => array( new BracketSpace\Notification\bbPress\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+				'render'   => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
 			) );
 
 	}, 1000 );
