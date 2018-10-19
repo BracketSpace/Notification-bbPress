@@ -21,8 +21,8 @@ class Created extends TopicTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug'      => 'bbpress/topic/created',
-			'name'      => __( 'New topic created', 'notification-bbpress' ),
+			'slug' => 'bbpress/topic/created',
+			'name' => __( 'New topic created', 'notification-bbpress' ),
 		) );
 
 		$this->add_action( 'bbp_new_topic_post_extras', 1000, 1 );

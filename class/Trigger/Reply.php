@@ -72,13 +72,13 @@ abstract class Reply extends Abstracts\Trigger {
 			'property_name' => 'reply_author',
 		) ) );
 
-    	$this->add_merge_tag( new MergeTag\User\UserLogin( array(
+		$this->add_merge_tag( new MergeTag\User\UserLogin( array(
 			'slug'          => 'reply_author_login',
-			'name'          => __( 'Reply author user login' , 'notification-bbpress' ),
+			'name'          => __( 'Reply author user login', 'notification-bbpress' ),
 			'property_name' => 'reply_author',
 		) ) );
 
-        $this->add_merge_tag( new MergeTag\User\UserEmail( array(
+		$this->add_merge_tag( new MergeTag\User\UserEmail( array(
 			'slug'          => 'reply_author_email',
 			'name'          => __( 'Reply author user email', 'notification-bbpress' ),
 			'property_name' => 'reply_author',
@@ -90,7 +90,7 @@ abstract class Reply extends Abstracts\Trigger {
 			'property_name' => 'reply_author',
 		) ) );
 
-        $this->add_merge_tag( new MergeTag\User\UserFirstName( array(
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( array(
 			'slug'          => 'reply_author_firstname',
 			'name'          => __( 'Reply author user first name', 'notification-bbpress' ),
 			'property_name' => 'reply_author',
@@ -111,8 +111,6 @@ abstract class Reply extends Abstracts\Trigger {
 			'slug' => 'reply_modification_datetime',
 			'name' => __( 'Reply modification date and time', 'notification-bbpress' ),
 		) ) );
-
-
 
 		$this->add_merge_tag( new MergeTag\Post\PostID( array(
 			'post_type' => 'topic',
@@ -146,13 +144,13 @@ abstract class Reply extends Abstracts\Trigger {
 			'property_name' => 'topic_author',
 		) ) );
 
-    	$this->add_merge_tag( new MergeTag\User\UserLogin( array(
+		$this->add_merge_tag( new MergeTag\User\UserLogin( array(
 			'slug'          => 'topic_author_login',
-			'name'          => __( 'Topic author user login' , 'notification-bbpress' ),
+			'name'          => __( 'Topic author user login', 'notification-bbpress' ),
 			'property_name' => 'topic_author',
 		) ) );
 
-        $this->add_merge_tag( new MergeTag\User\UserEmail( array(
+		$this->add_merge_tag( new MergeTag\User\UserEmail( array(
 			'slug'          => 'topic_author_email',
 			'name'          => __( 'Topic author user email', 'notification-bbpress' ),
 			'property_name' => 'topic_author',
@@ -164,7 +162,7 @@ abstract class Reply extends Abstracts\Trigger {
 			'property_name' => 'topic_author',
 		) ) );
 
-        $this->add_merge_tag( new MergeTag\User\UserFirstName( array(
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( array(
 			'slug'          => 'topic_author_firstname',
 			'name'          => __( 'Topic author user first name', 'notification-bbpress' ),
 			'property_name' => 'topic_author',
@@ -246,9 +244,9 @@ abstract class Reply extends Abstracts\Trigger {
 			'name'      => __( 'Forum title', 'notification-bbpress' ),
 		) ) );
 
-    }
+	}
 
-    /**
+	/**
 	 * Gets topic tags
 	 *
 	 * @param  integer $topic_id Topic ID.
@@ -258,7 +256,7 @@ abstract class Reply extends Abstracts\Trigger {
 		return implode( ', ', wp_get_post_terms( $topic_id, 'topic-tag', array( 'fields' => 'names' ) ) );
 	}
 
-    /**
+	/**
 	 * Gets topic type
 	 *
 	 * @param  integer $topic_id Topic ID.
@@ -268,7 +266,7 @@ abstract class Reply extends Abstracts\Trigger {
 
 		if ( bbp_is_topic_super_sticky( $topic_id ) ) {
 			$type = $this->types['super'];
-		} else if ( bbp_is_topic_sticky( $topic_id ) ) {
+		} elseif ( bbp_is_topic_sticky( $topic_id ) ) {
 			$type = $this->types['stick'];
 		} else {
 			$type = $this->types['unstick'];

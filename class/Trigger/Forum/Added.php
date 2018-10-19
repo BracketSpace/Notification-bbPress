@@ -21,8 +21,8 @@ class Added extends ForumTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug'      => 'bbpress/forum/new',
-			'name'      => __( 'New forum added', 'notification-bbpress' ),
+			'slug' => 'bbpress/forum/new',
+			'name' => __( 'New forum added', 'notification-bbpress' ),
 		) );
 
 		$this->add_action( 'transition_post_status', 10, 3 );
@@ -42,15 +42,15 @@ class Added extends ForumTrigger {
 		// WP_Post object.
 		$this->forum = $this->callback_args[2];
 
-		if ( $this->forum->post_type != bbp_get_forum_post_type() ) {
+		if ( bbp_get_forum_post_type() !== $this->forum->post_type ) {
 			return false;
 		}
 
-		if ( $new_status == $old_status ) {
+		if ( $new_status === $old_status ) {
 			return false;
 		}
 
-		if ( $new_status != 'publish' ) {
+		if ( 'publish' !== $new_status ) {
 			return false;
 		}
 

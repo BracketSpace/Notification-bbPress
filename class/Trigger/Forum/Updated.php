@@ -21,8 +21,8 @@ class Updated extends ForumTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug'      => 'bbpress/forum/updated',
-			'name'      => __( 'Forum updated', 'notification-bbpress' ),
+			'slug' => 'bbpress/forum/updated',
+			'name' => __( 'Forum updated', 'notification-bbpress' ),
 		) );
 
 		$this->add_action( 'post_updated', 10, 3 );
@@ -38,11 +38,11 @@ class Updated extends ForumTrigger {
 	public function action() {
 
 		// WP_Post object.
-		$this->forum  = $this->callback_args[1];
+		$this->forum = $this->callback_args[1];
 		// WP_Post object.
 		$forum_before = $this->callback_args[2];
 
-		if ( $this->forum->post_type != bbp_get_forum_post_type() ) {
+		if ( bbp_get_forum_post_type() !== $this->forum->post_type ) {
 			return false;
 		}
 
@@ -50,7 +50,7 @@ class Updated extends ForumTrigger {
 			return false;
 		}
 
-		if ( $forum_before->post_status != 'publish' || $this->forum->post_status == 'trash' ) {
+		if ( 'publish' !== $forum_before->post_status || 'trash' === $this->forum->post_status ) {
 			return false;
 		}
 

@@ -74,13 +74,13 @@ abstract class Topic extends Abstracts\Trigger {
 			'property_name' => 'author',
 		) ) );
 
-    	$this->add_merge_tag( new MergeTag\User\UserLogin( array(
+		$this->add_merge_tag( new MergeTag\User\UserLogin( array(
 			'slug'          => 'topic_author_login',
-			'name'          => __( 'Topic author user login' , 'notification-bbpress' ),
+			'name'          => __( 'Topic author user login', 'notification-bbpress' ),
 			'property_name' => 'author',
 		) ) );
 
-        $this->add_merge_tag( new MergeTag\User\UserEmail( array(
+		$this->add_merge_tag( new MergeTag\User\UserEmail( array(
 			'slug'          => 'topic_author_email',
 			'name'          => __( 'Topic author user email', 'notification-bbpress' ),
 			'property_name' => 'author',
@@ -92,7 +92,7 @@ abstract class Topic extends Abstracts\Trigger {
 			'property_name' => 'author',
 		) ) );
 
-        $this->add_merge_tag( new MergeTag\User\UserFirstName( array(
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( array(
 			'slug'          => 'topic_author_firstname',
 			'name'          => __( 'Topic author user first name', 'notification-bbpress' ),
 			'property_name' => 'author',
@@ -174,9 +174,9 @@ abstract class Topic extends Abstracts\Trigger {
 			'name'      => __( 'Forum title', 'notification-bbpress' ),
 		) ) );
 
-    }
+	}
 
-    /**
+	/**
 	 * Gets topic tags
 	 *
 	 * @param  integer $topic_id Topic ID.
@@ -186,7 +186,7 @@ abstract class Topic extends Abstracts\Trigger {
 		return implode( ', ', wp_get_post_terms( $topic_id, 'topic-tag', array( 'fields' => 'names' ) ) );
 	}
 
-    /**
+	/**
 	 * Gets topic type
 	 *
 	 * @param  integer $topic_id Topic ID.
@@ -196,7 +196,7 @@ abstract class Topic extends Abstracts\Trigger {
 
 		if ( bbp_is_topic_super_sticky( $topic_id ) ) {
 			$type = $this->types['super'];
-		} else if ( bbp_is_topic_sticky( $topic_id ) ) {
+		} elseif ( bbp_is_topic_sticky( $topic_id ) ) {
 			$type = $this->types['stick'];
 		} else {
 			$type = $this->types['unstick'];

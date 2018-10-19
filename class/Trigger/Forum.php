@@ -154,13 +154,13 @@ abstract class Forum extends Abstracts\Trigger {
 			'property_name' => 'author',
 		) ) );
 
-    	$this->add_merge_tag( new MergeTag\User\UserLogin( array(
+		$this->add_merge_tag( new MergeTag\User\UserLogin( array(
 			'slug'          => 'forum_author_login',
-			'name'          => __( 'Forum author user login' , 'notification-bbpress' ),
+			'name'          => __( 'Forum author user login', 'notification-bbpress' ),
 			'property_name' => 'author',
 		) ) );
 
-        $this->add_merge_tag( new MergeTag\User\UserEmail( array(
+		$this->add_merge_tag( new MergeTag\User\UserEmail( array(
 			'slug'          => 'forum_author_email',
 			'name'          => __( 'Forum author user email', 'notification-bbpress' ),
 			'property_name' => 'author',
@@ -172,7 +172,7 @@ abstract class Forum extends Abstracts\Trigger {
 			'property_name' => 'author',
 		) ) );
 
-        $this->add_merge_tag( new MergeTag\User\UserFirstName( array(
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( array(
 			'slug'          => 'forum_author_firstname',
 			'name'          => __( 'Forum author user first name', 'notification-bbpress' ),
 			'property_name' => 'author',
@@ -184,7 +184,7 @@ abstract class Forum extends Abstracts\Trigger {
 			'property_name' => 'author',
 		) ) );
 
-    }
+	}
 
 
 }

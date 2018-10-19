@@ -23,15 +23,15 @@ function notification_bbpress_autoload( $class ) {
 
 	$parts = explode( '\\', $class );
 
-	if ( array_shift( $parts ) != 'BracketSpace' ) {
+	if ( array_shift( $parts ) !== 'BracketSpace' ) {
 		return false;
 	}
 
-	if ( array_shift( $parts ) != 'Notification' ) {
+	if ( array_shift( $parts ) !== 'Notification' ) {
 		return false;
 	}
 
-	if ( array_shift( $parts ) != 'bbPress' ) {
+	if ( array_shift( $parts ) !== 'bbPress' ) {
 		return false;
 	}
 
@@ -58,7 +58,10 @@ add_action( 'after_setup_theme', function() {
 		'wp'           => '4.6',
 		'notification' => true,
 		'plugins'      => array(
-			'bbpress/bbpress.php'   => array( 'name' => 'bbPress', 'version' => '0' ),
+			'bbpress/bbpress.php' => array(
+				'name'    => 'bbPress',
+				'version' => '0',
+			),
 		),
 	) );
 
@@ -72,7 +75,7 @@ add_action( 'after_setup_theme', function() {
 	 * @return void
 	 */
 	function notification_bbpress_check_base_plugin( $comparsion, $r ) {
-		if ( $comparsion === true && ! function_exists( 'notification_runtime' ) ) {
+		if ( true === $comparsion && ! function_exists( 'notification_runtime' ) ) {
 			$r->add_error( __( 'Notification plugin active', 'notification-bbpress' ) );
 		}
 	}

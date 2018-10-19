@@ -21,8 +21,8 @@ class Removed extends ReplyTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug'      => 'bbpress/reply/removed',
-			'name'      => __( 'Reply removed', 'notification-bbpress' ),
+			'slug' => 'bbpress/reply/removed',
+			'name' => __( 'Reply removed', 'notification-bbpress' ),
 		) );
 
 		$this->add_action( 'trash_' . bbp_get_reply_post_type(), 10, 2 );
@@ -41,9 +41,9 @@ class Removed extends ReplyTrigger {
 
 		$this->meta = get_post_meta( $reply_id );
 
-		$this->reply  = $this->callback_args[1];
-		$this->topic  = get_post( $this->meta['_bbp_topic_id'][0] );
-		$this->forum  = get_post( $this->meta['_bbp_forum_id'][0] );
+		$this->reply = $this->callback_args[1];
+		$this->topic = get_post( $this->meta['_bbp_topic_id'][0] );
+		$this->forum = get_post( $this->meta['_bbp_forum_id'][0] );
 
 		$this->topic_meta = get_post_meta( $this->topic->ID );
 

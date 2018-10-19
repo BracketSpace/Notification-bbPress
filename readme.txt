@@ -49,6 +49,7 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 = [Next] =
 * PHP 7.2 compatibility
+* WordPress Coding Standards compatibility
 
 = 2.0.0 =
 * Plugin compatibility with Notification 5.0.0
