@@ -229,6 +229,19 @@ abstract class Reply extends Abstracts\Trigger {
 			},
 		) ) );
 
+		if ( function_exists( 'bbp_get_topic_subscribers' ) ) {
+
+			$this->add_merge_tag( new MergeTag\StringTag( array(
+				'slug'        => 'topic_subscriber_IDs',
+				'name'        => __( 'Topic subscriber IDs', 'notification-bbpress' ),
+				'description' => __( 'Comma-separated list.', 'notification-bbpress' ),
+				'resolver'    => function() {
+					return implode( ', ', bbp_get_topic_subscribers( $this->topic->ID ) );
+				},
+			) ) );
+
+		}
+
 		$this->add_merge_tag( new MergeTag\Post\PostID( array(
 			'post_type' => 'forum',
 			'name'      => __( 'Forum ID', 'notification-bbpress' ),
@@ -243,6 +256,19 @@ abstract class Reply extends Abstracts\Trigger {
 			'post_type' => 'forum',
 			'name'      => __( 'Forum title', 'notification-bbpress' ),
 		) ) );
+
+		if ( function_exists( 'bbp_get_forum_subscribers' ) ) {
+
+			$this->add_merge_tag( new MergeTag\StringTag( array(
+				'slug'        => 'forum_subscriber_IDs',
+				'name'        => __( 'Forum subscriber IDs', 'notification-bbpress' ),
+				'description' => __( 'Comma-separated list.', 'notification-bbpress' ),
+				'resolver'    => function() {
+					return implode( ', ', bbp_get_forum_subscribers( $this->forum->ID ) );
+				},
+			) ) );
+
+		}
 
 	}
 
