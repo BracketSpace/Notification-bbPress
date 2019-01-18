@@ -148,6 +148,19 @@ abstract class Forum extends Abstracts\Trigger {
 			},
 		) ) );
 
+		if ( function_exists( 'bbp_get_forum_subscribers' ) ) {
+
+			$this->add_merge_tag( new MergeTag\StringTag( array(
+				'slug'        => 'forum_subscriber_IDs',
+				'name'        => __( 'Forum subscriber IDs', 'notification-bbpress' ),
+				'description' => __( 'Comma-separated list.', 'notification-bbpress' ),
+				'resolver'    => function() {
+					return implode( ', ', bbp_get_forum_subscribers( $this->forum->ID ) );
+				},
+			) ) );
+
+		}
+
 		$this->add_merge_tag( new MergeTag\User\UserID( array(
 			'slug'          => 'forum_author_ID',
 			'name'          => __( 'Forum author user ID', 'notification-bbpress' ),

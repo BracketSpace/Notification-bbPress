@@ -47,6 +47,10 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
 
+= [Next] =
+* [Added] Form subscribers IDs merge tag
+* [Added] Topic subscribers IDs merge tag
+
 = 2.0.1 =
 * PHP 7.2 compatibility
 * WordPress Coding Standards compatibility
