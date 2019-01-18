@@ -5,7 +5,7 @@
  * Plugin URI: https://notification.underdev.it
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 2.0.1
+ * Version: 2.0.2
  * License: GPL3
  * Text Domain: notification-bbpress
  * Domain Path: /languages
