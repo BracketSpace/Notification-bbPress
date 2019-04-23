@@ -5,7 +5,7 @@
  * Plugin URI: https://wordpress.org/plugins/notification-bbpress/
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 2.0.2
+ * Version: 2.1.0
  * License: GPL3
  * Text Domain: notification-bbpress
  * Domain Path: /languages
@@ -21,7 +21,7 @@ require_once 'vendor/autoload.php';
 /**
  * Gets plugin runtime object.
  *
- * @since  [Next]
+ * @since  2.1.0
  * @return BracketSpace\Notification\bbPress\Runtime
  */
 function notification_bbpress_runtime() {

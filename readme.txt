@@ -3,7 +3,7 @@ Contributors: notification, bracketspace, Kubitomakita
 Tags: notification, notify, email, mail, bbpress, forum, trigger
 Requires at least: 4.9
 Tested up to: 5.2
-Stable tag: 2.0.2
+Stable tag: 2.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,7 +46,7 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
 
-= [Next] =
+= 2.1.0 =
 * [Changed] Notification v6.0.0 compat.
 
 = 2.0.2 =

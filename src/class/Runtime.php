@@ -25,7 +25,7 @@ class Runtime extends Utils\DocHooks {
 	/**
 	 * Class constructor
 	 *
-	 * @since [Next]
+	 * @since 2.1.0
 	 * @param string $plugin_file Plugin main file full path.
 	 */
 	public function __construct( $plugin_file ) {
@@ -36,7 +36,7 @@ class Runtime extends Utils\DocHooks {
 	/**
 	 * Loads needed files
 	 *
-	 * @since  [Next]
+	 * @since  2.1.0
 	 * @return void
 	 */
 	public function boot() {
@@ -49,7 +49,7 @@ class Runtime extends Utils\DocHooks {
 	/**
 	 * Creates needed class instances
 	 *
-	 * @since  [Next]
+	 * @since  2.1.0
 	 * @return void
 	 */
 	public function instances() {
@@ -70,7 +70,7 @@ class Runtime extends Utils\DocHooks {
 	 *
 	 * @action notification/boot
 	 *
-	 * @since  [Next]
+	 * @since  2.1.0
 	 * @return void
 	 */
 	public function late_instances() {
@@ -99,7 +99,7 @@ class Runtime extends Utils\DocHooks {
 	/**
 	 * Returns new View object
 	 *
-	 * @since  [Next]
+	 * @since  2.1.0
 	 * @return View view object
 	 */
 	public function view() {
@@ -110,7 +110,7 @@ class Runtime extends Utils\DocHooks {
 	 * Loads functions from src/inc/functions directory
 	 * All .php files are loaded automatically
 	 *
-	 * @since  [Next]
+	 * @since  2.1.0
 	 * @return void
 	 */
 	public function load_functions() {
