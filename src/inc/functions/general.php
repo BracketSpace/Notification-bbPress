@@ -8,7 +8,7 @@
 /**
  * Creates new View object.
  *
- * @since  [Next]
+ * @since  2.1.0
  * @return View
  */
 function notification_bbpress_create_view() {
