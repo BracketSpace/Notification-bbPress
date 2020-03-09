@@ -5,7 +5,7 @@
  * @package notification
  */
 
-namespace BracketSpace\Notification\bbPress\Trigger;
+namespace BracketSpace\Notification\bbPress\Components\Trigger;
 
 use BracketSpace\Notification\Abstracts;
 use BracketSpace\Notification\Defaults\MergeTag;
@@ -87,6 +87,7 @@ abstract class Forum extends Abstracts\Trigger {
 		$this->add_merge_tag( new MergeTag\IntegerTag( array(
 			'slug'     => 'subforum_count',
 			'name'     => __( 'Subforum count', 'notification-bbpress' ),
+			'group'    => __( 'Forum', 'notification-bbpress' ),
 			'resolver' => function() {
 				return isset( $this->meta['_bbp_forum_subforum_count'] ) ? $this->meta['_bbp_forum_subforum_count'][0] : 0;
 			},
@@ -95,6 +96,7 @@ abstract class Forum extends Abstracts\Trigger {
 		$this->add_merge_tag( new MergeTag\IntegerTag( array(
 			'slug'     => 'reply_count',
 			'name'     => __( 'Reply count', 'notification-bbpress' ),
+			'group'    => __( 'Forum', 'notification-bbpress' ),
 			'resolver' => function() {
 				return isset( $this->meta['_bbp_reply_count'] ) ? $this->meta['_bbp_reply_count'][0] : 0;
 			},
@@ -103,6 +105,7 @@ abstract class Forum extends Abstracts\Trigger {
 		$this->add_merge_tag( new MergeTag\IntegerTag( array(
 			'slug'     => 'total_reply_count',
 			'name'     => __( 'Total reply count', 'notification-bbpress' ),
+			'group'    => __( 'Forum', 'notification-bbpress' ),
 			'resolver' => function() {
 				return isset( $this->meta['_bbp_total_reply_count'] ) ? $this->meta['_bbp_total_reply_count'][0] : 0;
 			},
@@ -111,6 +114,7 @@ abstract class Forum extends Abstracts\Trigger {
 		$this->add_merge_tag( new MergeTag\IntegerTag( array(
 			'slug'     => 'topic_count',
 			'name'     => __( 'Topic count', 'notification-bbpress' ),
+			'group'    => __( 'Forum', 'notification-bbpress' ),
 			'resolver' => function() {
 				return isset( $this->meta['_bbp_topic_count'] ) ? $this->meta['_bbp_topic_count'][0] : 0;
 			},
@@ -119,6 +123,7 @@ abstract class Forum extends Abstracts\Trigger {
 		$this->add_merge_tag( new MergeTag\IntegerTag( array(
 			'slug'     => 'total_topic_count',
 			'name'     => __( 'Total topic count', 'notification-bbpress' ),
+			'group'    => __( 'Forum', 'notification-bbpress' ),
 			'resolver' => function() {
 				return isset( $this->meta['_bbp_total_topic_count'] ) ? $this->meta['_bbp_total_topic_count'][0] : 0;
 			},
@@ -127,6 +132,7 @@ abstract class Forum extends Abstracts\Trigger {
 		$this->add_merge_tag( new MergeTag\StringTag( array(
 			'slug'     => 'forum_status',
 			'name'     => __( 'Forum status', 'notification-bbpress' ),
+			'group'    => __( 'Forum', 'notification-bbpress' ),
 			'resolver' => function() {
 				return isset( $this->meta['_bbp_status'] ) ? $this->statuses[ $this->meta['_bbp_total_topic_count'][0] ] : $this->statuses['open'];
 			},
@@ -135,6 +141,7 @@ abstract class Forum extends Abstracts\Trigger {
 		$this->add_merge_tag( new MergeTag\StringTag( array(
 			'slug'     => 'forum_type',
 			'name'     => __( 'Forum type', 'notification-bbpress' ),
+			'group'    => __( 'Forum', 'notification-bbpress' ),
 			'resolver' => function() {
 				return isset( $this->meta['_bbp_forum_type'] ) ? $this->types[ $this->meta['_bbp_forum_type'][0] ] : $this->types['open'];
 			},
@@ -143,6 +150,7 @@ abstract class Forum extends Abstracts\Trigger {
 		$this->add_merge_tag( new MergeTag\StringTag( array(
 			'slug'     => 'forum_visibility',
 			'name'     => __( 'Forum visibility', 'notification-bbpress' ),
+			'group'    => __( 'Forum', 'notification-bbpress' ),
 			'resolver' => function() {
 				return $this->visibilities[ bbp_get_forum_visibility( $this->forum->ID ) ];
 			},
@@ -154,6 +162,7 @@ abstract class Forum extends Abstracts\Trigger {
 				'slug'        => 'forum_subscriber_IDs',
 				'name'        => __( 'Forum subscriber IDs', 'notification-bbpress' ),
 				'description' => __( 'Comma-separated list.', 'notification-bbpress' ),
+				'group'       => __( 'Forum', 'notification-bbpress' ),
 				'resolver'    => function() {
 					return implode( ', ', bbp_get_forum_subscribers( $this->forum->ID ) );
 				},
@@ -165,36 +174,42 @@ abstract class Forum extends Abstracts\Trigger {
 			'slug'          => 'forum_author_ID',
 			'name'          => __( 'Forum author user ID', 'notification-bbpress' ),
 			'property_name' => 'author',
+			'group'         => __( 'Forum author', 'notification-bbpress' ),
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( array(
 			'slug'          => 'forum_author_login',
 			'name'          => __( 'Forum author user login', 'notification-bbpress' ),
 			'property_name' => 'author',
+			'group'         => __( 'Forum author', 'notification-bbpress' ),
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( array(
 			'slug'          => 'forum_author_email',
 			'name'          => __( 'Forum author user email', 'notification-bbpress' ),
 			'property_name' => 'author',
+			'group'         => __( 'Forum author', 'notification-bbpress' ),
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserNicename( array(
 			'slug'          => 'forum_author_nicename',
 			'name'          => __( 'Forum author user nicename', 'notification-bbpress' ),
 			'property_name' => 'author',
+			'group'         => __( 'Forum author', 'notification-bbpress' ),
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( array(
 			'slug'          => 'forum_author_firstname',
 			'name'          => __( 'Forum author user first name', 'notification-bbpress' ),
 			'property_name' => 'author',
+			'group'         => __( 'Forum author', 'notification-bbpress' ),
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( array(
 			'slug'          => 'forum_author_lastname',
 			'name'          => __( 'Forum author user last name', 'notification-bbpress' ),
 			'property_name' => 'author',
+			'group'         => __( 'Forum author', 'notification-bbpress' ),
 		) ) );
 
 	}

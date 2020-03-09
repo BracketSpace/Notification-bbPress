@@ -1,19 +1,19 @@
 <?php
 /**
- * Reply trigger abstract
+ * Topic trigger abstract
  *
  * @package notification
  */
 
-namespace BracketSpace\Notification\bbPress\Trigger;
+namespace BracketSpace\Notification\bbPress\Components\Trigger;
 
 use BracketSpace\Notification\Abstracts;
 use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
- * Reply trigger class
+ * Topic trigger class
  */
-abstract class Reply extends Abstracts\Trigger {
+abstract class Topic extends Abstracts\Trigger {
 
 	/**
 	 * Constructor
@@ -23,12 +23,12 @@ abstract class Reply extends Abstracts\Trigger {
 	public function __construct( $params = array() ) {
 
 		if ( ! isset( $params['slug'], $params['name'] ) ) {
-			trigger_error( 'Reply trigger requires slug and name params.', E_USER_ERROR );
+			trigger_error( 'Topic trigger requires slug and name params.', E_USER_ERROR );
 		}
 
 		parent::__construct( $params['slug'], $params['name'] );
 
-		$this->set_group( __( 'bbPress : Reply', 'notification-bbpress' ) );
+		$this->set_group( __( 'bbPress : Topic', 'notification-bbpress' ) );
 
 		$this->statuses = bbp_get_topic_statuses();
 		$this->types    = bbp_get_topic_types();
@@ -41,76 +41,6 @@ abstract class Reply extends Abstracts\Trigger {
 	 * @return void
 	 */
 	public function merge_tags() {
-
-		$this->add_merge_tag( new MergeTag\Post\PostID( array(
-			'post_type' => 'reply',
-			'name'      => __( 'Reply ID', 'notification-bbpress' ),
-		) ) );
-
-		$this->add_merge_tag( new MergeTag\Post\PostPermalink( array(
-			'post_type' => 'reply',
-			'name'      => __( 'Reply URL', 'notification-bbpress' ),
-		) ) );
-
-		$this->add_merge_tag( new MergeTag\Post\PostContent( array(
-			'post_type'   => 'reply',
-			'name'        => __( 'Reply description', 'notification-bbpress' ),
-			'description' => __( 'Hello, I just wanted to ask about...', 'notification-bbpress' ),
-		) ) );
-
-		$this->add_merge_tag( new MergeTag\UrlTag( array(
-			'slug'     => 'reply_in_topic_url',
-			'name'     => __( 'Reply URL in Topic', 'notification-bbpress' ),
-			'resolver' => function() {
-				return bbp_get_reply_url( $this->reply->ID );
-			},
-		) ) );
-
-		$this->add_merge_tag( new MergeTag\User\UserID( array(
-			'slug'          => 'reply_author_ID',
-			'name'          => __( 'Reply author user ID', 'notification-bbpress' ),
-			'property_name' => 'reply_author',
-		) ) );
-
-		$this->add_merge_tag( new MergeTag\User\UserLogin( array(
-			'slug'          => 'reply_author_login',
-			'name'          => __( 'Reply author user login', 'notification-bbpress' ),
-			'property_name' => 'reply_author',
-		) ) );
-
-		$this->add_merge_tag( new MergeTag\User\UserEmail( array(
-			'slug'          => 'reply_author_email',
-			'name'          => __( 'Reply author user email', 'notification-bbpress' ),
-			'property_name' => 'reply_author',
-		) ) );
-
-		$this->add_merge_tag( new MergeTag\User\UserNicename( array(
-			'slug'          => 'reply_author_nicename',
-			'name'          => __( 'Reply author user nicename', 'notification-bbpress' ),
-			'property_name' => 'reply_author',
-		) ) );
-
-		$this->add_merge_tag( new MergeTag\User\UserFirstName( array(
-			'slug'          => 'reply_author_firstname',
-			'name'          => __( 'Reply author user first name', 'notification-bbpress' ),
-			'property_name' => 'reply_author',
-		) ) );
-
-		$this->add_merge_tag( new MergeTag\User\UserLastName( array(
-			'slug'          => 'reply_author_lastname',
-			'name'          => __( 'Reply author user last name', 'notification-bbpress' ),
-			'property_name' => 'reply_author',
-		) ) );
-
-		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug' => 'reply_creation_datetime',
-			'name' => __( 'Reply creation date and time', 'notification-bbpress' ),
-		) ) );
-
-		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug' => 'reply_modification_datetime',
-			'name' => __( 'Reply modification date and time', 'notification-bbpress' ),
-		) ) );
 
 		$this->add_merge_tag( new MergeTag\Post\PostID( array(
 			'post_type' => 'topic',
@@ -135,43 +65,49 @@ abstract class Reply extends Abstracts\Trigger {
 		$this->add_merge_tag( new MergeTag\Post\PostContent( array(
 			'post_type'   => 'topic',
 			'name'        => __( 'Topic description', 'notification-bbpress' ),
-			'description' => __( 'I think this might be helpful...', 'notification-bbpress' ),
+			'description' => __( 'Hello, I just wanted to ask about...', 'notification-bbpress' ),
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserID( array(
 			'slug'          => 'topic_author_ID',
 			'name'          => __( 'Topic author user ID', 'notification-bbpress' ),
-			'property_name' => 'topic_author',
+			'property_name' => 'author',
+			'group'         => __( 'Topic author', 'notification-bbpress' ),
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( array(
 			'slug'          => 'topic_author_login',
 			'name'          => __( 'Topic author user login', 'notification-bbpress' ),
-			'property_name' => 'topic_author',
+			'property_name' => 'author',
+			'group'         => __( 'Topic author', 'notification-bbpress' ),
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( array(
 			'slug'          => 'topic_author_email',
 			'name'          => __( 'Topic author user email', 'notification-bbpress' ),
-			'property_name' => 'topic_author',
+			'property_name' => 'author',
+			'group'         => __( 'Topic author', 'notification-bbpress' ),
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserNicename( array(
 			'slug'          => 'topic_author_nicename',
 			'name'          => __( 'Topic author user nicename', 'notification-bbpress' ),
-			'property_name' => 'topic_author',
+			'property_name' => 'author',
+			'group'         => __( 'Topic author', 'notification-bbpress' ),
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( array(
 			'slug'          => 'topic_author_firstname',
 			'name'          => __( 'Topic author user first name', 'notification-bbpress' ),
-			'property_name' => 'topic_author',
+			'property_name' => 'author',
+			'group'         => __( 'Topic author', 'notification-bbpress' ),
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( array(
 			'slug'          => 'topic_author_lastname',
 			'name'          => __( 'Topic author user last name', 'notification-bbpress' ),
-			'property_name' => 'topic_author',
+			'property_name' => 'author',
+			'group'         => __( 'Topic author', 'notification-bbpress' ),
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
@@ -192,22 +128,25 @@ abstract class Reply extends Abstracts\Trigger {
 		$this->add_merge_tag( new MergeTag\IntegerTag( array(
 			'slug'     => 'topic_reply_count',
 			'name'     => __( 'Topic reply count', 'notification-bbpress' ),
+			'group'    => __( 'Topic', 'notification-bbpress' ),
 			'resolver' => function() {
-				return isset( $this->topic_meta['_bbp_reply_count'] ) ? $this->topic_meta['_bbp_reply_count'][0] : 0;
+				return isset( $this->meta['_bbp_reply_count'] ) ? $this->meta['_bbp_reply_count'][0] : 0;
 			},
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\IntegerTag( array(
 			'slug'     => 'topic_voice_count',
 			'name'     => __( 'Topic voice count', 'notification-bbpress' ),
+			'group'    => __( 'Topic', 'notification-bbpress' ),
 			'resolver' => function() {
-				return isset( $this->topic_meta['_bbp_voice_count'] ) ? $this->topic_meta['_bbp_voice_count'][0] : 0;
+				return isset( $this->meta['_bbp_voice_count'] ) ? $this->meta['_bbp_voice_count'][0] : 0;
 			},
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\StringTag( array(
 			'slug'     => 'topic_tags',
 			'name'     => __( 'Topic tags', 'notification-bbpress' ),
+			'group'    => __( 'Topic', 'notification-bbpress' ),
 			'resolver' => function() {
 				return $this->get_topic_tags( $this->topic->ID );
 			},
@@ -216,6 +155,7 @@ abstract class Reply extends Abstracts\Trigger {
 		$this->add_merge_tag( new MergeTag\StringTag( array(
 			'slug'     => 'topic_status',
 			'name'     => __( 'Topic status', 'notification-bbpress' ),
+			'group'    => __( 'Topic', 'notification-bbpress' ),
 			'resolver' => function() {
 				return isset( $this->statuses[ $this->topic->post_status ] ) ? $this->statuses[ $this->topic->post_status ] : $this->statuses['publish'];
 			},
@@ -224,6 +164,7 @@ abstract class Reply extends Abstracts\Trigger {
 		$this->add_merge_tag( new MergeTag\StringTag( array(
 			'slug'     => 'topic_type',
 			'name'     => __( 'Topic type', 'notification-bbpress' ),
+			'group'    => __( 'Topic', 'notification-bbpress' ),
 			'resolver' => function() {
 				return $this->get_topic_type( $this->topic->ID );
 			},
@@ -235,6 +176,7 @@ abstract class Reply extends Abstracts\Trigger {
 				'slug'        => 'topic_subscriber_IDs',
 				'name'        => __( 'Topic subscriber IDs', 'notification-bbpress' ),
 				'description' => __( 'Comma-separated list.', 'notification-bbpress' ),
+				'group'       => __( 'Topic', 'notification-bbpress' ),
 				'resolver'    => function() {
 					return implode( ', ', bbp_get_topic_subscribers( $this->topic->ID ) );
 				},
@@ -263,6 +205,7 @@ abstract class Reply extends Abstracts\Trigger {
 				'slug'        => 'forum_subscriber_IDs',
 				'name'        => __( 'Forum subscriber IDs', 'notification-bbpress' ),
 				'description' => __( 'Comma-separated list.', 'notification-bbpress' ),
+				'group'       => __( 'Forum', 'notification-bbpress' ),
 				'resolver'    => function() {
 					return implode( ', ', bbp_get_forum_subscribers( $this->forum->ID ) );
 				},

@@ -5,9 +5,9 @@
  * @package notification
  */
 
-namespace BracketSpace\Notification\bbPress\Trigger\Topic;
+namespace BracketSpace\Notification\bbPress\Components\Trigger\Topic;
 
-use BracketSpace\Notification\bbPress\Trigger\Topic as TopicTrigger;
+use BracketSpace\Notification\bbPress\Components\Trigger\Topic as TopicTrigger;
 use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
@@ -44,8 +44,8 @@ class Created extends TopicTrigger {
 		$this->forum  = get_post( $this->meta['_bbp_forum_id'][0] );
 		$this->author = get_userdata( $this->topic->post_author );
 
-		$this->topic_creation_datetime   = strtotime( $this->topic->post_date );
-		$this->topic_mofication_datetime = strtotime( $this->topic->post_modified );
+		$this->topic_creation_datetime   = strtotime( $this->topic->post_date_gmt );
+		$this->topic_mofication_datetime = strtotime( $this->topic->post_modified_gmt );
 
 		if ( isset( $this->meta['_bbp_last_active_time'] ) ) {
 			$this->topic_last_active_datetime = strtotime( $this->meta['_bbp_last_active_time'][0] );

@@ -1,11 +1,11 @@
 <?php
 /**
- * Settings class
+ * Settings
  *
  * @package notification/bbpress
  */
 
-namespace BracketSpace\Notification\bbPress\Core;
+namespace BracketSpace\Notification\bbPress\Admin;
 
 use BracketSpace\Notification\Utils\Settings\CoreFields;
 
@@ -15,12 +15,13 @@ use BracketSpace\Notification\Utils\Settings\CoreFields;
 class Settings {
 
 	/**
-	 * Registers settings
+	 * Registers trigger settings
 	 *
-	 * @param object $settings Settings API object.
+	 * @since  [Next]
+	 * @param  object $settings Settings API object.
 	 * @return void
 	 */
-	public function register_settings( $settings ) {
+	public function register_trigger_settings( $settings ) {
 
 		$triggers = $settings->add_section( __( 'Triggers', 'notification' ), 'triggers' );
 

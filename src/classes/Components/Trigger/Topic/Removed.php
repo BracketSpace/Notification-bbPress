@@ -1,19 +1,19 @@
 <?php
 /**
- * Topic updated trigger
+ * Topic removed trigger
  *
  * @package notification
  */
 
-namespace BracketSpace\Notification\bbPress\Trigger\Topic;
+namespace BracketSpace\Notification\bbPress\Components\Trigger\Topic;
 
-use BracketSpace\Notification\bbPress\Trigger\Topic as TopicTrigger;
+use BracketSpace\Notification\bbPress\Components\Trigger\Topic as TopicTrigger;
 use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
- * Topic updated trigger class
+ * Topic removed trigger class
  */
-class Updated extends TopicTrigger {
+class Removed extends TopicTrigger {
 
 	/**
 	 * Constructor
@@ -21,11 +21,11 @@ class Updated extends TopicTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug' => 'bbpress/topic/updated',
-			'name' => __( 'Topic updated', 'notification-bbpress' ),
+			'slug' => 'bbpress/topic/removed',
+			'name' => __( 'Topic removed', 'notification-bbpress' ),
 		) );
 
-		$this->add_action( 'bbp_edit_topic_post_extras', 10, 1 );
+		$this->add_action( 'trash_' . bbp_get_topic_post_type(), 10, 2 );
 
 	}
 
@@ -40,12 +40,12 @@ class Updated extends TopicTrigger {
 		$topic_id = $this->callback_args[0];
 
 		$this->meta   = get_post_meta( $topic_id );
-		$this->topic  = get_post( $topic_id );
+		$this->topic  = $this->callback_args[1];
 		$this->forum  = get_post( $this->meta['_bbp_forum_id'][0] );
 		$this->author = get_userdata( $this->topic->post_author );
 
-		$this->topic_creation_datetime   = strtotime( $this->topic->post_date );
-		$this->topic_mofication_datetime = strtotime( $this->topic->post_modified );
+		$this->topic_creation_datetime   = strtotime( $this->topic->post_date_gmt );
+		$this->topic_mofication_datetime = strtotime( $this->topic->post_modified_gmt );
 
 		if ( isset( $this->meta['_bbp_last_active_time'] ) ) {
 			$this->topic_last_active_datetime = strtotime( $this->meta['_bbp_last_active_time'][0] );

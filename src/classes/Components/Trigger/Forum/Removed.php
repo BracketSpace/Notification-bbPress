@@ -5,9 +5,9 @@
  * @package notification
  */
 
-namespace BracketSpace\Notification\bbPress\Trigger\Forum;
+namespace BracketSpace\Notification\bbPress\Components\Trigger\Forum;
 
-use BracketSpace\Notification\bbPress\Trigger\Forum as ForumTrigger;
+use BracketSpace\Notification\bbPress\Components\Trigger\Forum as ForumTrigger;
 use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
@@ -41,8 +41,8 @@ class Removed extends ForumTrigger {
 		$this->forum = $this->callback_args[1];
 
 		$this->meta                      = get_post_meta( $this->forum->ID );
-		$this->forum_creation_datetime   = strtotime( $this->forum->post_date );
-		$this->forum_mofication_datetime = strtotime( $this->forum->post_modified );
+		$this->forum_creation_datetime   = strtotime( $this->forum->post_date_gmt );
+		$this->forum_mofication_datetime = strtotime( $this->forum->post_modified_gmt );
 		$this->author                    = get_userdata( $this->forum->post_author );
 
 		if ( isset( $this->meta['_bbp_last_active_time'] ) ) {

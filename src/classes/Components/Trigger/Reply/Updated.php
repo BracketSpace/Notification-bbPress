@@ -5,9 +5,9 @@
  * @package notification
  */
 
-namespace BracketSpace\Notification\bbPress\Trigger\Reply;
+namespace BracketSpace\Notification\bbPress\Components\Trigger\Reply;
 
-use BracketSpace\Notification\bbPress\Trigger\Reply as ReplyTrigger;
+use BracketSpace\Notification\bbPress\Components\Trigger\Reply as ReplyTrigger;
 use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
@@ -50,11 +50,11 @@ class Updated extends ReplyTrigger {
 		$this->reply_author = get_userdata( $this->reply->post_author );
 		$this->topic_author = get_userdata( $this->topic->post_author );
 
-		$this->reply_creation_datetime   = strtotime( $this->topic->post_date );
-		$this->reply_mofication_datetime = strtotime( $this->topic->post_modified );
+		$this->reply_creation_datetime   = strtotime( $this->topic->post_date_gmt );
+		$this->reply_mofication_datetime = strtotime( $this->topic->post_modified_gmt );
 
-		$this->topic_creation_datetime   = strtotime( $this->topic->post_date );
-		$this->topic_mofication_datetime = strtotime( $this->topic->post_modified );
+		$this->topic_creation_datetime   = strtotime( $this->topic->post_date_gmt );
+		$this->topic_mofication_datetime = strtotime( $this->topic->post_modified_gmt );
 
 		if ( isset( $this->meta['_bbp_last_active_time'] ) ) {
 			$this->topic_last_active_datetime = strtotime( $this->meta['_bbp_last_active_time'][0] );
