@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "micropackage/dochooks",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/micropackage/dochooks.git",
-                "reference": "3dbaf5d50c0677bd465992b76a25df7b0dfe154e"
+                "reference": "9eddd9b480fce394d0123ebe806d542e6409105e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/micropackage/dochooks/zipball/3dbaf5d50c0677bd465992b76a25df7b0dfe154e",
-                "reference": "3dbaf5d50c0677bd465992b76a25df7b0dfe154e",
+                "url": "https://api.github.com/repos/micropackage/dochooks/zipball/9eddd9b480fce394d0123ebe806d542e6409105e",
+                "reference": "9eddd9b480fce394d0123ebe806d542e6409105e",
                 "shasum": ""
             },
             "require": {
@@ -45,7 +45,7 @@
                 }
             ],
             "description": "DocHooks - annotated WordPress hooks",
-            "time": "2020-01-28T12:33:02+00:00"
+            "time": "2020-03-10T10:11:47+00:00"
         },
         {
             "name": "micropackage/filesystem",

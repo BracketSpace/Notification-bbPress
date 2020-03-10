@@ -8,13 +8,16 @@
 namespace BracketSpace\Notification\bbPress;
 
 use BracketSpace\Notification\bbPress\Vendor\Micropackage\Requirements\Requirements;
-use BracketSpace\Notification\bbPress\Vendor\Micropackage\DocHooks\Helper as DocHooks;
+use BracketSpace\Notification\bbPress\Vendor\Micropackage\DocHooks\HookTrait;
+use BracketSpace\Notification\bbPress\Vendor\Micropackage\DocHooks\Helper as DocHooksHelper;
 use BracketSpace\Notification\bbPress\Vendor\Micropackage\Filesystem\Filesystem;
 
 /**
  * Runtime class
  */
 class Runtime {
+
+	use HookTrait;
 
 	/**
 	 * Main plugin file path
@@ -29,6 +32,13 @@ class Runtime {
 	 * @var bool
 	 */
 	protected $requirements_unmet;
+
+	/**
+	 * Components
+	 *
+	 * @var array
+	 */
+	protected $components = [];
 
 	/**
 	 * Class constructor
@@ -52,9 +62,6 @@ class Runtime {
 		if ( did_action( 'notification/bbpress/init' ) || $this->requirements_unmet ) {
 			return;
 		}
-
-		// Autoloading.
-		require_once dirname( $this->plugin_file ) . '/vendor/autoload.php';
 
 		// Requirements check.
 		$requirements = new Requirements( __( 'Notification : bbPress', 'notification-bbpress' ), [
@@ -81,7 +88,7 @@ class Runtime {
 		$this->filesystems();
 		$this->singletons();
 		$this->actions();
-		$this->components();
+		$this->elements();
 
 		do_action( 'notification/bbpress/init' );
 
@@ -95,11 +102,11 @@ class Runtime {
 	 */
 	public function register_hooks() {
 
-		DocHooks::hook( $this );
+		$this->add_hooks( $this );
 
-		foreach ( get_object_vars( $this ) as $instance ) {
-			if ( is_object( $instance ) ) {
-				DocHooks::hook( $instance );
+		foreach ( $this->components as $component ) {
+			if ( is_object( $component ) ) {
+				$this->add_hooks( $component );
 			}
 		}
 
@@ -134,6 +141,48 @@ class Runtime {
 	}
 
 	/**
+	 * Adds runtime component
+	 *
+	 * @since  [Next]
+	 * @throws \Exception When component is already registered.
+	 * @param  string $name      Component name.
+	 * @param  mixed  $component Component.
+	 * @return $this
+	 */
+	public function add_component( $name, $component ) {
+
+		if ( isset( $this->components[ $name ] ) ) {
+			throw new \Exception( sprintf( 'Component %s is already added.', $name ) );
+		}
+
+		$this->components[ $name ] = $component;
+
+		return $this;
+
+	}
+
+	/**
+	 * Gets runtime component
+	 *
+	 * @since  [Next]
+	 * @param  string $name Component name.
+	 * @return mixed        Component or null
+	 */
+	public function component( $name ) {
+		return isset( $this->components[ $name ] ) ? $this->components[ $name ] : null;
+	}
+
+	/**
+	 * Gets runtime components
+	 *
+	 * @since  [Next]
+	 * @return array
+	 */
+	public function components() {
+		return $this->components;
+	}
+
+	/**
 	 * Creates needed classes
 	 * Singletons are used for a sake of performance
 	 *
@@ -142,7 +191,7 @@ class Runtime {
 	 */
 	public function singletons() {
 
-		$this->admin_settings = new Admin\Settings();
+		$this->add_component( 'admin_settings', new Admin\Settings() );
 
 	}
 
@@ -156,37 +205,37 @@ class Runtime {
 
 		$this->register_hooks();
 
-		notification_register_settings( [ $this->admin_settings, 'register_trigger_settings' ], 20 );
+		notification_register_settings( [ $this->component( 'admin_settings' ), 'register_trigger_settings' ], 20 );
 
 		// DocHooks compatibility.
-		if ( ! DocHooks::is_enabled() && $this->get_filesystem( 'includes' )->exists( 'hooks.php' ) ) {
+		if ( ! DocHooksHelper::is_enabled() && $this->get_filesystem( 'includes' )->exists( 'hooks.php' ) ) {
 			include_once $this->get_filesystem( 'includes' )->path( 'hooks.php' );
 		}
 
 	}
 
 	/**
-	 * Loads components
+	 * Loads elements
 	 *
 	 * @since  [Next]
 	 * @return void
 	 */
-	public function components() {
-		array_map( [ $this, 'load_component' ], [
+	public function elements() {
+		array_map( [ $this, 'load_element' ], [
 			'triggers',
 		] );
 	}
 
 	/**
-	 * Loads component
+	 * Loads element
 	 *
 	 * @since  [Next]
-	 * @param  string $component Component file slug.
+	 * @param  string $element Component file slug.
 	 * @return void
 	 */
-	public function load_component( $component ) {
-		if ( apply_filters( 'notification/bbpress/load/component/' . $component, true ) ) {
-			$path = sprintf( 'components/%s.php', $component );
+	public function load_element( $element ) {
+		if ( apply_filters( 'notification/bbpress/load/element/' . $element, true ) ) {
+			$path = sprintf( 'elements/%s.php', $element );
 			if ( $this->get_filesystem( 'includes' )->exists( $path ) ) {
 				require_once $this->get_filesystem( 'includes' )->path( $path );
 			}
