@@ -88,7 +88,6 @@ class Runtime {
 		$this->filesystems();
 		$this->singletons();
 		$this->actions();
-		$this->elements();
 
 		do_action( 'notification/bbpress/init' );
 
@@ -216,6 +215,8 @@ class Runtime {
 
 	/**
 	 * Loads elements
+	 *
+	 * @action notification/elements
 	 *
 	 * @since  [Next]
 	 * @return void
