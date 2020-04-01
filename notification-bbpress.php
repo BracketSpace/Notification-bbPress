@@ -5,7 +5,7 @@
  * Plugin URI: https://wordpress.org/plugins/notification-bbpress/
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 2.1.0
+ * Version: 2.2.0
  * License: GPL3
  * Text Domain: notification-bbpress
  * Domain Path: /languages
@@ -13,57 +13,72 @@
  * @package notification/bbpress
  */
 
-/**
- * Load Composer dependencies.
- */
-require_once 'vendor/autoload.php';
-
-/**
- * Gets plugin runtime object.
- *
- * @since  2.1.0
- * @return BracketSpace\Notification\bbPress\Runtime
- */
-function notification_bbpress_runtime() {
-
-	global $notification_bbpress_runtime;
-
-	if ( empty( $notification_bbpress_runtime ) ) {
-		$notification_bbpress_runtime = new BracketSpace\Notification\bbPress\Runtime( __FILE__ );
-	}
-
-	return $notification_bbpress_runtime;
-
-}
-
-/**
- * Boot up the plugin
- */
-add_action( 'notification/boot/initial', function() {
+if ( ! class_exists( 'NotificationbbPress' ) ) :
 
 	/**
-	 * Requirements check
+	 * NotificationbbPress class
 	 */
-	$requirements = new BracketSpace\Notification\bbPress\Utils\Requirements( __( 'Notification : bbPress', 'notification-bbpress' ), [
-		'php'          => '5.6',
-		'wp'           => '4.9',
-		'notification' => '6.0.0',
-		'plugins'      => [
-			'bbpress/bbpress.php' => [
-				'name'    => 'bbPress',
-				'version' => '0',
-			],
-		],
-	] );
+	class NotificationbbPress {
 
-	$requirements->add_check( 'notification', require 'src/inc/requirements/notification.php' );
+		/**
+		 * Runtime object
+		 *
+		 * @var BracketSpace\Notification\bbPress\Runtime
+		 */
+		protected static $runtime;
 
-	if ( ! $requirements->satisfied() ) {
-		add_action( 'admin_notices', [ $requirements, 'notice' ] );
-		return;
+		/**
+		 * Initializes the plugin runtime
+		 *
+		 * @since  2.2.0
+		 * @param  string $plugin_file Main plugin file.
+		 * @return BracketSpace\Notification\bbPress\Runtime
+		 */
+		public static function init( $plugin_file ) {
+			if ( ! isset( self::$runtime ) ) {
+				// Autoloading.
+				require_once dirname( $plugin_file ) . '/vendor/autoload.php';
+				self::$runtime = new BracketSpace\Notification\bbPress\Runtime( $plugin_file );
+			}
+
+			return self::$runtime;
+		}
+
+		/**
+		 * Gets runtime component
+		 *
+		 * @since  2.2.0
+		 * @return array
+		 */
+		public static function components() {
+			return isset( self::$runtime ) ? self::$runtime->components() : [];
+		}
+
+		/**
+		 * Gets runtime component
+		 *
+		 * @since  2.2.0
+		 * @param  string $component_name Component name.
+		 * @return mixed
+		 */
+		public static function component( $component_name ) {
+			return isset( self::$runtime ) ? self::$runtime->component( $component_name ) : null;
+		}
+
+		/**
+		 * Gets runtime object
+		 *
+		 * @since  2.2.0
+		 * @return BracketSpace\Notification\Runtime
+		 */
+		public static function runtime() {
+			return self::$runtime;
+		}
+
 	}
 
-	$runtime = notification_bbpress_runtime();
-	$runtime->boot();
+endif;
 
-} );
+add_action( 'notification/init', function() {
+	NotificationbbPress::init( __FILE__ )->init();
+}, 2 );
