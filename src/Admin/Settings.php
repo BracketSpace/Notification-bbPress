@@ -22,7 +22,6 @@ class Settings {
 	 * @return void
 	 */
 	public function register_trigger_settings( $settings ) {
-
 		$triggers = $settings->add_section( __( 'Triggers', 'notification' ), 'triggers' );
 
 		$triggers->add_group( __( 'bbPress', 'notification-bbpress' ), 'bbpress' )
@@ -56,7 +55,6 @@ class Settings {
 				'render'   => [ new CoreFields\Checkbox(), 'input' ],
 				'sanitize' => [ new CoreFields\Checkbox(), 'sanitize' ],
 			] );
-
 	}
 
 	/**
@@ -68,7 +66,6 @@ class Settings {
 	 * @return array
 	 */
 	public function filter_post_types( $post_types ) {
-
 		if ( isset( $post_types[ bbp_get_forum_post_type() ] ) ) {
 			unset( $post_types[ bbp_get_forum_post_type() ] );
 		}
@@ -82,7 +79,6 @@ class Settings {
 		}
 
 		return $post_types;
-
 	}
 
 }
