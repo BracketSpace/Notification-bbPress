@@ -8,7 +8,7 @@
  * Version: 2.2.0
  * License: GPL3
  * Text Domain: notification-bbpress
- * Domain Path: /languages
+ * Domain Path: resources/languages
  *
  * @package notification/bbpress
  */
@@ -30,7 +30,7 @@ if ( ! class_exists( 'NotificationbbPress' ) ) :
 		/**
 		 * Initializes the plugin runtime
 		 *
-		 * @since  2.2.0
+		 * @since  [Next]
 		 * @param  string $plugin_file Main plugin file.
 		 * @return BracketSpace\Notification\bbPress\Runtime
 		 */
@@ -47,7 +47,7 @@ if ( ! class_exists( 'NotificationbbPress' ) ) :
 		/**
 		 * Gets runtime component
 		 *
-		 * @since  2.2.0
+		 * @since  [Next]
 		 * @return array
 		 */
 		public static function components() {
@@ -57,7 +57,7 @@ if ( ! class_exists( 'NotificationbbPress' ) ) :
 		/**
 		 * Gets runtime component
 		 *
-		 * @since  2.2.0
+		 * @since  [Next]
 		 * @param  string $component_name Component name.
 		 * @return mixed
 		 */
@@ -68,11 +68,26 @@ if ( ! class_exists( 'NotificationbbPress' ) ) :
 		/**
 		 * Gets runtime object
 		 *
-		 * @since  2.2.0
+		 * @since  [Next]
 		 * @return BracketSpace\Notification\Runtime
 		 */
 		public static function runtime() {
 			return self::$runtime;
+		}
+
+		/**
+		 * Gets plugin filesystem
+		 *
+		 * @since  [Next]
+		 * @throws \Exception When runtime wasn't invoked yet.
+		 * @return \BracketSpace\Notification\bbPress\Vendor\Micropackage\Filesystem\Filesystem
+		 */
+		public static function fs() {
+			if ( ! isset( self::$runtime ) ) {
+				throw new Exception( 'Runtime has not been invoked yet.' );
+			}
+
+			return self::$runtime->get_filesystem();
 		}
 
 	}

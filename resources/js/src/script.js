@@ -1,0 +1,1 @@
+/* global jQuery, notification-bbpress */
