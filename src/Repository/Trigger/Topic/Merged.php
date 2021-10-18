@@ -35,7 +35,7 @@ class Merged extends TopicTrigger {
 	 *
 	 * @return mixed void or false if no notifications should be sent
 	 */
-	public function action() {
+	public function context() {
 
 		$this->dest_topic   = get_post( $this->callback_args[0] );
 		$this->source_topic = get_post( $this->callback_args[1] );

@@ -35,7 +35,7 @@ class Added extends ForumTrigger {
 	 *
 	 * @return mixed void or false if no notifications should be sent
 	 */
-	public function action() {
+	public function context() {
 
 		$new_status = $this->callback_args[0];
 		$old_status = $this->callback_args[1];

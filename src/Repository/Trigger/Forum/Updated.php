@@ -38,7 +38,7 @@ class Updated extends ForumTrigger {
 	 * @param  object $forum_before Forum object.
 	 * @return mixed void or false if no notifications should be sent
 	 */
-	public function action( $forum_id, $forum, $forum_before ) {
+	public function context( $forum_id, $forum, $forum_before ) {
 
 		// WP_Post object.
 		$this->forum = $forum;

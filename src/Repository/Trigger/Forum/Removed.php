@@ -35,7 +35,7 @@ class Removed extends ForumTrigger {
 	 *
 	 * @return mixed void or false if no notifications should be sent
 	 */
-	public function action() {
+	public function context() {
 
 		// WP_Post object.
 		$this->forum = $this->callback_args[1];

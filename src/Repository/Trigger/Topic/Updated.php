@@ -35,7 +35,7 @@ class Updated extends TopicTrigger {
 	 *
 	 * @return mixed void or false if no notifications should be sent
 	 */
-	public function action() {
+	public function context() {
 
 		$topic_id = $this->callback_args[0];
 
