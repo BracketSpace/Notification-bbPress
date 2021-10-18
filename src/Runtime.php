@@ -74,7 +74,7 @@ class Runtime {
 		$requirements = new RequirementsEngine( __( 'Notification : bbPress', 'notification-bbpress' ), [
 			'php'          => '7.0',
 			'wp'           => '5.3',
-			'notification' => '7.0.0',
+			'notification' => '8.0.0',
 			'plugins'      => [
 				[
 					'file'    => 'bbpress/bbpress.php',
