@@ -5,7 +5,7 @@
  * Plugin URI: https://wordpress.org/plugins/notification-bbpress/
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 2.2.0
+ * Version: 3.0.0
  * License: GPL3
  * Text Domain: notification-bbpress
  * Domain Path: resources/languages
@@ -30,7 +30,7 @@ if ( ! class_exists( 'NotificationbbPress' ) ) :
 		/**
 		 * Initializes the plugin runtime
 		 *
-		 * @since  [Next]
+		 * @since  3.0.0
 		 * @param  string $plugin_file Main plugin file.
 		 * @return BracketSpace\Notification\bbPress\Runtime
 		 */
@@ -47,7 +47,7 @@ if ( ! class_exists( 'NotificationbbPress' ) ) :
 		/**
 		 * Gets runtime component
 		 *
-		 * @since  [Next]
+		 * @since  3.0.0
 		 * @return array
 		 */
 		public static function components() {
@@ -57,7 +57,7 @@ if ( ! class_exists( 'NotificationbbPress' ) ) :
 		/**
 		 * Gets runtime component
 		 *
-		 * @since  [Next]
+		 * @since  3.0.0
 		 * @param  string $component_name Component name.
 		 * @return mixed
 		 */
@@ -68,7 +68,7 @@ if ( ! class_exists( 'NotificationbbPress' ) ) :
 		/**
 		 * Gets runtime object
 		 *
-		 * @since  [Next]
+		 * @since  3.0.0
 		 * @return BracketSpace\Notification\Runtime
 		 */
 		public static function runtime() {
@@ -78,7 +78,7 @@ if ( ! class_exists( 'NotificationbbPress' ) ) :
 		/**
 		 * Gets plugin filesystem
 		 *
-		 * @since  [Next]
+		 * @since  3.0.0
 		 * @throws \Exception When runtime wasn't invoked yet.
 		 * @return \BracketSpace\Notification\bbPress\Vendor\Micropackage\Filesystem\Filesystem
 		 */
