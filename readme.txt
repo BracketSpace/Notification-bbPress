@@ -3,7 +3,7 @@ Contributors: notification, bracketspace, Kubitomakita
 Tags: notification, notify, email, mail, bbpress, forum, trigger
 Requires at least: 4.9
 Tested up to: 5.8
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,7 +46,7 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
 
-= [Next] =
+= 3.0.1 =
 * [Fixed] Trigger context callback parameters.
 
 = 3.0.0 =
