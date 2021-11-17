@@ -33,15 +33,14 @@ class Removed extends ReplyTrigger {
 	 * Assigns action callback args to object
 	 * Return `false` if you want to abort the trigger execution
 	 *
-	 * @return mixed void or false if no notifications should be sent
+	 * @param int      $reply_id Reply ID.
+	 * @param \WP_Post $reply    Reply object.
+	 * @return void|false
 	 */
-	public function context() {
-
-		$reply_id = $this->callback_args[0];
-
+	public function context( $reply_id, $reply ) {
 		$this->meta = get_post_meta( $reply_id );
 
-		$this->reply = $this->callback_args[1];
+		$this->reply = $reply;
 		$this->topic = get_post( $this->meta['_bbp_topic_id'][0] );
 		$this->forum = get_post( $this->meta['_bbp_forum_id'][0] );
 
@@ -61,7 +60,6 @@ class Removed extends ReplyTrigger {
 		} else {
 			$this->topic_last_active_datetime = 0;
 		}
-
 	}
 
 }

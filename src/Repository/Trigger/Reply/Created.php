@@ -33,12 +33,10 @@ class Created extends ReplyTrigger {
 	 * Assigns action callback args to object
 	 * Return `false` if you want to abort the trigger execution
 	 *
-	 * @return mixed void or false if no notifications should be sent
+	 * @param int $reply_id Reply ID.
+	 * @return void|false
 	 */
-	public function context() {
-
-		$reply_id = $this->callback_args[0];
-
+	public function context( $reply_id ) {
 		$this->meta = get_post_meta( $reply_id );
 
 		$this->reply = get_post( $reply_id );
@@ -61,7 +59,6 @@ class Created extends ReplyTrigger {
 		} else {
 			$this->topic_last_active_datetime = 0;
 		}
-
 	}
 
 }

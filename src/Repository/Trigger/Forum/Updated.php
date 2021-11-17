@@ -33,14 +33,12 @@ class Updated extends ForumTrigger {
 	 * Assigns action callback args to object
 	 * Return `false` if you want to abort the trigger execution
 	 *
-	 * @param  int    $forum_id     Forum ID.
-	 * @param  object $forum        Forum object.
-	 * @param  object $forum_before Forum object.
+	 * @param  int      $forum_id     Forum ID.
+	 * @param  \WP_Post $forum        Forum object.
+	 * @param  \WP_Post $forum_before Forum object.
 	 * @return mixed void or false if no notifications should be sent
 	 */
 	public function context( $forum_id, $forum, $forum_before ) {
-
-		// WP_Post object.
 		$this->forum = $forum;
 
 		if ( bbp_get_forum_post_type() !== $this->forum->post_type ) {
@@ -65,7 +63,6 @@ class Updated extends ForumTrigger {
 		} else {
 			$this->forum_last_active_datetime = 0;
 		}
-
 	}
 
 }

@@ -46,6 +46,9 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
 
+= [Next] =
+* [Fixed] Trigger context callback parameters.
+
 = 3.0.0 =
 * [Changed] Plugin codebase to match Notification v8 internal API.
 
