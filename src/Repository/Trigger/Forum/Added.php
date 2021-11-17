@@ -31,16 +31,14 @@ class Added extends ForumTrigger {
 
 	/**
 	 * Assigns action callback args to object
-	 * Return `false` if you want to abort the trigger execution
 	 *
-	 * @return mixed void or false if no notifications should be sent
+	 * @param string   $new_status New status.
+	 * @param string   $old_status Old status.
+	 * @param \WP_Post $forum Forum object.
+	 * @return void|false
 	 */
-	public function context() {
-
-		$new_status = $this->callback_args[0];
-		$old_status = $this->callback_args[1];
-		// WP_Post object.
-		$this->forum = $this->callback_args[2];
+	public function context( $new_status, $old_status, $forum ) {
+		$this->forum = $forum;
 
 		if ( bbp_get_forum_post_type() !== $this->forum->post_type ) {
 			return false;
@@ -64,9 +62,6 @@ class Added extends ForumTrigger {
 		} else {
 			$this->forum_last_active_datetime = 0;
 		}
-
-		$this->postpone_action( 'bbp_forum_attributes_metabox_save', 1000 );
-
 	}
 
 }

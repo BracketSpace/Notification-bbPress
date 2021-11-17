@@ -31,14 +31,13 @@ class Removed extends ForumTrigger {
 
 	/**
 	 * Assigns action callback args to object
-	 * Return `false` if you want to abort the trigger execution
 	 *
-	 * @return mixed void or false if no notifications should be sent
+	 * @param int      $forum_id Forum ID.
+	 * @param \WP_Post $forum    Forum object.
+	 * @return void|false
 	 */
-	public function context() {
-
-		// WP_Post object.
-		$this->forum = $this->callback_args[1];
+	public function context( $forum_id, $forum ) {
+		$this->forum = $forum;
 
 		$this->meta                      = get_post_meta( $this->forum->ID );
 		$this->forum_creation_datetime   = strtotime( $this->forum->post_date_gmt );
@@ -50,7 +49,6 @@ class Removed extends ForumTrigger {
 		} else {
 			$this->forum_last_active_datetime = 0;
 		}
-
 	}
 
 }

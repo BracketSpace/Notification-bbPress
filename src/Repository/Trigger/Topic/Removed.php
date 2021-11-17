@@ -33,14 +33,13 @@ class Removed extends TopicTrigger {
 	 * Assigns action callback args to object
 	 * Return `false` if you want to abort the trigger execution
 	 *
-	 * @return mixed void or false if no notifications should be sent
+	 * @param int      $topic_id Topic ID.
+	 * @param \WP_Post $topic    Topic object.
+	 * @return void|false
 	 */
-	public function context() {
-
-		$topic_id = $this->callback_args[0];
-
+	public function context( $topic_id, $topic ) {
 		$this->meta   = get_post_meta( $topic_id );
-		$this->topic  = $this->callback_args[1];
+		$this->topic  = $topic;
 		$this->forum  = get_post( $this->meta['_bbp_forum_id'][0] );
 		$this->author = get_userdata( $this->topic->post_author );
 
@@ -52,7 +51,6 @@ class Removed extends TopicTrigger {
 		} else {
 			$this->topic_last_active_datetime = 0;
 		}
-
 	}
 
 }

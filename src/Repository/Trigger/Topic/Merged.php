@@ -33,12 +33,13 @@ class Merged extends TopicTrigger {
 	 * Assigns action callback args to object
 	 * Return `false` if you want to abort the trigger execution
 	 *
-	 * @return mixed void or false if no notifications should be sent
+	 * @param int $dest_topic_id   Destination Topic ID.
+	 * @param int $source_topic_id Source Topic ID.
+	 * @return void|false
 	 */
-	public function context() {
-
-		$this->dest_topic   = get_post( $this->callback_args[0] );
-		$this->source_topic = get_post( $this->callback_args[1] );
+	public function context( $dest_topic_id, $source_topic_id ) {
+		$this->dest_topic   = get_post( $dest_topic_id );
+		$this->source_topic = get_post( $source_topic_id );
 
 		$forum_id    = get_post_meta( $this->dest_topic->ID, '_bbp_forum_id', true );
 		$this->forum = get_post( $forum_id );
@@ -47,7 +48,6 @@ class Merged extends TopicTrigger {
 		$this->source_topic_author = get_userdata( $this->source_topic->post_author );
 
 		$this->topic_merge_datetime = time();
-
 	}
 
 	/**
