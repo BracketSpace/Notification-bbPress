@@ -56,6 +56,9 @@ Yes! We're offering a [custom plugin development](https://bracketspace.com/custo
 
 == Changelog ==
 
+= [Next]
+* [Changed] Plugin codebase to match Notification v9 internal API.
+
 = 3.0.1 =
 * [Fixed] Trigger context callback parameters.
 
