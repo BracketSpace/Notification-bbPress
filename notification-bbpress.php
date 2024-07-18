@@ -8,7 +8,7 @@
  * Version: 4.0.0
  * License: GPL3
  * Text Domain: notification-bbpress
- * Requires Plugins: notification
+ * Requires Plugins: bbpress, notification
  *
  * @package notification/bbpress
  *
