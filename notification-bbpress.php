@@ -5,25 +5,31 @@
  * Plugin URI: https://wordpress.org/plugins/notification-bbpress/
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 3.0.1
+ * Version: 4.0.0
  * License: GPL3
  * Text Domain: notification-bbpress
- * Domain Path: resources/languages
+ * Requires Plugins: notification
  *
  * @package notification/bbpress
+ *
+ * phpcs:disable PSR1.Files.SideEffects.FoundWithSymbols
+ * phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace
+ * phpcs:disable Squiz.Classes.ClassFileName.NoMatch
  */
 
-if ( ! class_exists( 'NotificationbbPress' ) ) :
+declare(strict_types=1);
+
+if (! class_exists('NotificationbbPress')) :
 
 	/**
 	 * NotificationbbPress class
 	 */
-	class NotificationbbPress {
-
+	class NotificationbbPress
+	{
 		/**
 		 * Runtime object
 		 *
-		 * @var BracketSpace\Notification\bbPress\Runtime
+		 * @var ?BracketSpace\Notification\bbPress\Runtime
 		 */
 		protected static $runtime;
 
@@ -31,47 +37,51 @@ if ( ! class_exists( 'NotificationbbPress' ) ) :
 		 * Initializes the plugin runtime
 		 *
 		 * @since  3.0.0
-		 * @param  string $plugin_file Main plugin file.
+		 * @param  string $pluginFile Main plugin file.
 		 * @return BracketSpace\Notification\bbPress\Runtime
 		 */
-		public static function init( $plugin_file ) {
-			if ( ! isset( self::$runtime ) ) {
+		public static function init($pluginFile)
+		{
+			if (self::$runtime === null) {
 				// Autoloading.
-				require_once dirname( $plugin_file ) . '/vendor/autoload.php';
-				self::$runtime = new BracketSpace\Notification\bbPress\Runtime( $plugin_file );
+				require_once dirname($pluginFile) . '/vendor/autoload.php';
+				self::$runtime = new BracketSpace\Notification\bbPress\Runtime($pluginFile);
 			}
 
 			return self::$runtime;
 		}
 
 		/**
-		 * Gets runtime component
+		 * Gets runtime components
 		 *
 		 * @since  3.0.0
-		 * @return array
+		 * @return array<class-string, object>
 		 */
-		public static function components() {
-			return isset( self::$runtime ) ? self::$runtime->components() : [];
+		public static function components()
+		{
+			return self::$runtime !== null ? self::$runtime->components() : [];
 		}
 
 		/**
 		 * Gets runtime component
 		 *
 		 * @since  3.0.0
-		 * @param  string $component_name Component name.
-		 * @return mixed
+		 * @param  class-string $componentName Component name.
+		 * @return object|null
 		 */
-		public static function component( $component_name ) {
-			return isset( self::$runtime ) ? self::$runtime->component( $component_name ) : null;
+		public static function component($componentName)
+		{
+			return self::$runtime !== null ? self::$runtime->component($componentName) : null;
 		}
 
 		/**
 		 * Gets runtime object
 		 *
 		 * @since  3.0.0
-		 * @return BracketSpace\Notification\Runtime
+		 * @return ?BracketSpace\Notification\bbPress\Runtime
 		 */
-		public static function runtime() {
+		public static function runtime()
+		{
 			return self::$runtime;
 		}
 
@@ -80,20 +90,24 @@ if ( ! class_exists( 'NotificationbbPress' ) ) :
 		 *
 		 * @since  3.0.0
 		 * @throws \Exception When runtime wasn't invoked yet.
-		 * @return \BracketSpace\Notification\bbPress\Vendor\Micropackage\Filesystem\Filesystem
+		 * @return \BracketSpace\Notification\bbPress\Dependencies\Micropackage\Filesystem\Filesystem
 		 */
-		public static function fs() {
-			if ( ! isset( self::$runtime ) ) {
-				throw new Exception( 'Runtime has not been invoked yet.' );
+		public static function fs()
+		{
+			if (self::$runtime === null) {
+				throw new \Exception('Runtime has not been invoked yet.');
 			}
 
-			return self::$runtime->get_filesystem();
+			return self::$runtime->getFilesystem();
 		}
-
 	}
 
 endif;
 
-add_action( 'notification/init', function() {
-	NotificationbbPress::init( __FILE__ )->init();
-}, 2 );
+add_action(
+	'notification/init',
+	static function () {
+		NotificationbbPress::init(__FILE__)->init();
+	},
+	2
+);

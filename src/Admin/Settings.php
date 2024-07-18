@@ -5,6 +5,8 @@
  * @package notification/bbpress
  */
 
+declare(strict_types=1);
+
 namespace BracketSpace\Notification\bbPress\Admin;
 
 use BracketSpace\Notification\Utils\Settings\CoreFields;
@@ -12,49 +14,58 @@ use BracketSpace\Notification\Utils\Settings\CoreFields;
 /**
  * Settings class
  */
-class Settings {
-
+class Settings
+{
 	/**
 	 * Registers trigger settings
 	 *
+	 * @action notification/settings/register 20
+	 *
 	 * @since  2.2.0
-	 * @param  object $settings Settings API object.
+	 * @param  \BracketSpace\Notification\Utils\Settings $settings Settings API object.
 	 * @return void
 	 */
-	public function register_trigger_settings( $settings ) {
-		$triggers = $settings->add_section( __( 'Triggers', 'notification' ), 'triggers' );
+	public function registerTriggerSettings($settings)
+	{
+		$triggers = $settings->addSection(__('Triggers', 'notification-bbpress'), 'triggers');
 
-		$triggers->add_group( __( 'bbPress', 'notification-bbpress' ), 'bbpress' )
-			->add_field( [
-				'name'     => __( 'Forum', 'notification-bbpress' ),
-				'slug'     => 'forum_enable',
-				'default'  => true,
-				'addons'   => [
-					'label' => __( 'Enable Forum triggers', 'notification-bbpress' ),
-				],
-				'render'   => [ new CoreFields\Checkbox(), 'input' ],
-				'sanitize' => [ new CoreFields\Checkbox(), 'sanitize' ],
-			] )
-			->add_field( [
-				'name'     => __( 'Topic', 'notification-bbpress' ),
-				'slug'     => 'topic_enable',
-				'default'  => true,
-				'addons'   => [
-					'label' => __( 'Enable Topic triggers', 'notification-bbpress' ),
-				],
-				'render'   => [ new CoreFields\Checkbox(), 'input' ],
-				'sanitize' => [ new CoreFields\Checkbox(), 'sanitize' ],
-			] )
-			->add_field( [
-				'name'     => __( 'Reply', 'notification-bbpress' ),
-				'slug'     => 'reply_enable',
-				'default'  => true,
-				'addons'   => [
-					'label' => __( 'Enable Reply triggers', 'notification-bbpress' ),
-				],
-				'render'   => [ new CoreFields\Checkbox(), 'input' ],
-				'sanitize' => [ new CoreFields\Checkbox(), 'sanitize' ],
-			] );
+		$triggers->addGroup(__('bbPress', 'notification-bbpress'), 'bbpress')
+			->addField(
+				[
+					'name' => __('Forum', 'notification-bbpress'),
+					'slug' => 'forum_enable',
+					'default' => true,
+					'addons' => [
+						'label' => __('Enable Forum triggers', 'notification-bbpress'),
+					],
+					'render' => [new CoreFields\Checkbox(), 'input'],
+					'sanitize' => [new CoreFields\Checkbox(), 'sanitize'],
+				]
+			)
+			->addField(
+				[
+					'name' => __('Topic', 'notification-bbpress'),
+					'slug' => 'topic_enable',
+					'default' => true,
+					'addons' => [
+						'label' => __('Enable Topic triggers', 'notification-bbpress'),
+					],
+					'render' => [new CoreFields\Checkbox(), 'input'],
+					'sanitize' => [new CoreFields\Checkbox(), 'sanitize'],
+				]
+			)
+			->addField(
+				[
+					'name' => __('Reply', 'notification-bbpress'),
+					'slug' => 'reply_enable',
+					'default' => true,
+					'addons' => [
+						'label' => __('Enable Reply triggers', 'notification-bbpress'),
+					],
+					'render' => [new CoreFields\Checkbox(), 'input'],
+					'sanitize' => [new CoreFields\Checkbox(), 'sanitize'],
+				]
+			);
 	}
 
 	/**
@@ -62,23 +73,23 @@ class Settings {
 	 *
 	 * @filter notification/settings/triggers/valid_post_types
 	 *
-	 * @param  array $post_types Array of post types.
-	 * @return array
+	 * @param  array<string, string> $postTypes Array of post types.
+	 * @return array<string, string>
 	 */
-	public function filter_post_types( $post_types ) {
-		if ( isset( $post_types[ bbp_get_forum_post_type() ] ) ) {
-			unset( $post_types[ bbp_get_forum_post_type() ] );
+	public function filterPostTypes( $postTypes )
+	{
+		if (isset($postTypes[bbp_get_forum_post_type()])) {
+			unset($postTypes[bbp_get_forum_post_type()]);
 		}
 
-		if ( isset( $post_types[ bbp_get_topic_post_type() ] ) ) {
-			unset( $post_types[ bbp_get_topic_post_type() ] );
+		if (isset($postTypes[bbp_get_topic_post_type()])) {
+			unset($postTypes[bbp_get_topic_post_type()]);
 		}
 
-		if ( isset( $post_types[ bbp_get_reply_post_type() ] ) ) {
-			unset( $post_types[ bbp_get_reply_post_type() ] );
+		if (isset($postTypes[bbp_get_reply_post_type()])) {
+			unset($postTypes[bbp_get_reply_post_type()]);
 		}
 
-		return $post_types;
+		return $postTypes;
 	}
-
 }
