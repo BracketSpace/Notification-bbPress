@@ -5,64 +5,60 @@
  * @package notification-bbpress
  */
 
+declare(strict_types=1);
+
 namespace BracketSpace\Notification\bbPress\Repository\Trigger\Forum;
 
 use BracketSpace\Notification\bbPress\Repository\Trigger\Forum as ForumTrigger;
-use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
  * Forum updated trigger class
  */
-class Updated extends ForumTrigger {
-
+class Updated extends ForumTrigger
+{
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	public function __construct()
+	{
+		parent::__construct(
+			[
+				'slug' => 'bbpress/forum/updated',
+				'name' => __('Forum updated', 'notification-bbpress'),
+			]
+		);
 
-		parent::__construct( array(
-			'slug' => 'bbpress/forum/updated',
-			'name' => __( 'Forum updated', 'notification-bbpress' ),
-		) );
-
-		$this->add_action( 'post_updated', 10, 3 );
-
+		$this->addAction('post_updated', 10, 3);
 	}
 
 	/**
 	 * Assigns action callback args to object
 	 * Return `false` if you want to abort the trigger execution
 	 *
-	 * @param  int      $forum_id     Forum ID.
+	 * @param  int      $forumId     Forum ID.
 	 * @param  \WP_Post $forum        Forum object.
-	 * @param  \WP_Post $forum_before Forum object.
+	 * @param  \WP_Post $forumBefore Forum object.
 	 * @return mixed void or false if no notifications should be sent
 	 */
-	public function context( $forum_id, $forum, $forum_before ) {
-		$this->forum = $forum;
-
-		if ( bbp_get_forum_post_type() !== $this->forum->post_type ) {
+	public function context($forumId, $forum, $forumBefore)
+	{
+		// phpcs:disable Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps
+		if (bbp_get_forum_post_type() !== $forum->post_type) {
 			return false;
 		}
 
-		if ( empty( $this->forum->post_name ) ) {
+		if (empty($forum->post_name)) {
 			return false;
 		}
 
-		if ( ! in_array( $forum_before->post_status, [ 'publish', 'private' ], true ) || 'trash' === $this->forum->post_status ) {
+		if (
+			! in_array($forumBefore->post_status, ['publish', 'private'], true) ||
+			$forum->post_status === 'trash'
+		) {
 			return false;
 		}
+		// phpcs:enable Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps
 
-		$this->meta                      = get_post_meta( $this->forum->ID );
-		$this->forum_creation_datetime   = strtotime( $this->forum->post_date_gmt );
-		$this->forum_mofication_datetime = strtotime( $this->forum->post_modified_gmt );
-		$this->author                    = get_userdata( $this->forum->post_author );
-
-		if ( isset( $this->meta['_bbp_last_active_time'] ) ) {
-			$this->forum_last_active_datetime = strtotime( $this->meta['_bbp_last_active_time'][0] );
-		} else {
-			$this->forum_last_active_datetime = 0;
-		}
+		$this->setProperties($forum);
 	}
-
 }
