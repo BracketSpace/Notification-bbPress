@@ -17,7 +17,7 @@ use BracketSpace\Notification\bbPress\Dependencies\Micropackage\Filesystem\Files
 /**
  * Runtime class
  *
- * @since  [Next]
+ * @since  4.0.0
  */
 class Runtime
 {
