@@ -5,7 +5,7 @@
  * Plugin URI: https://wordpress.org/plugins/notification-bbpress/
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 4.0.0
+ * Version: 4.0.1
  * License: GPL3
  * Text Domain: notification-bbpress
  * Requires Plugins: bbpress, notification
