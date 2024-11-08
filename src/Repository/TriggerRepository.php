@@ -35,7 +35,7 @@ class TriggerRepository
 		}
 
 		// phpcs:ignore SlevomatCodingStandard.ControlStructures.EarlyExit.EarlyExitNotUsed
-		if (!\Notification::settings()->getSetting('triggers/bbpress/reply_enable')) {
+		if (\Notification::settings()->getSetting('triggers/bbpress/reply_enable')) {
 			Register::trigger(new Trigger\Reply\Created());
 			Register::trigger(new Trigger\Reply\Updated());
 			Register::trigger(new Trigger\Reply\Removed());

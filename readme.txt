@@ -56,7 +56,10 @@ Yes! We're offering a [custom plugin development](https://bracketspace.com/custo
 
 == Changelog ==
 
-= 4.0.0
+= [Next] =
+* [Fixed] Wrong condition for Reply triggers, previously, unchecked option registered the triggers.
+
+= 4.0.0 =
 * [Changed] Plugin codebase to match Notification v9 internal API.
 
 = 3.0.1 =
