@@ -145,6 +145,7 @@ abstract class Reply extends BaseTrigger
 			new MergeTag\Post\PostID(
 				[
 					'post_type' => 'reply',
+					'property_name' => 'reply',
 					'name' => __('Reply ID', 'notification-bbpress'),
 				]
 			)
@@ -154,6 +155,7 @@ abstract class Reply extends BaseTrigger
 			new MergeTag\Post\PostPermalink(
 				[
 					'post_type' => 'reply',
+					'property_name' => 'reply',
 					'name' => __('Reply URL', 'notification-bbpress'),
 				]
 			)
@@ -163,6 +165,7 @@ abstract class Reply extends BaseTrigger
 			new MergeTag\Post\PostContent(
 				[
 					'post_type' => 'reply',
+					'property_name' => 'reply',
 					'name' => __('Reply description', 'notification-bbpress'),
 					'description' => __('Hello, I just wanted to ask about...', 'notification-bbpress'),
 				]
@@ -276,6 +279,7 @@ abstract class Reply extends BaseTrigger
 			new MergeTag\Post\PostID(
 				[
 					'post_type' => 'topic',
+					'property_name' => 'topic',
 					'name' => __('Topic ID', 'notification-bbpress'),
 				]
 			)
@@ -285,6 +289,7 @@ abstract class Reply extends BaseTrigger
 			new MergeTag\Post\PostPermalink(
 				[
 					'post_type' => 'topic',
+					'property_name' => 'topic',
 					'name' => __('Topic URL', 'notification-bbpress'),
 				]
 			)
@@ -294,6 +299,7 @@ abstract class Reply extends BaseTrigger
 			new MergeTag\Post\PostTitle(
 				[
 					'post_type' => 'topic',
+					'property_name' => 'topic',
 					'name' => __('Topic title', 'notification-bbpress'),
 				]
 			)
@@ -303,6 +309,7 @@ abstract class Reply extends BaseTrigger
 			new MergeTag\Post\PostSlug(
 				[
 					'post_type' => 'topic',
+					'property_name' => 'topic',
 					'name' => __('Topic slug', 'notification-bbpress'),
 				]
 			)
@@ -312,6 +319,7 @@ abstract class Reply extends BaseTrigger
 			new MergeTag\Post\PostContent(
 				[
 					'post_type' => 'topic',
+					'property_name' => 'topic',
 					'name' => __('Topic description', 'notification-bbpress'),
 					'description' => __('I think this might be helpful...', 'notification-bbpress'),
 				]
@@ -513,6 +521,7 @@ abstract class Reply extends BaseTrigger
 			new MergeTag\Post\PostID(
 				[
 					'post_type' => 'forum',
+					'property_name' => 'forum',
 					'name' => __('Forum ID', 'notification-bbpress'),
 				]
 			)
@@ -522,6 +531,7 @@ abstract class Reply extends BaseTrigger
 			new MergeTag\Post\PostPermalink(
 				[
 					'post_type' => 'forum',
+					'property_name' => 'forum',
 					'name' => __('Forum URL', 'notification-bbpress'),
 				]
 			)
@@ -531,6 +541,7 @@ abstract class Reply extends BaseTrigger
 			new MergeTag\Post\PostTitle(
 				[
 					'post_type' => 'forum',
+					'property_name' => 'forum',
 					'name' => __('Forum title', 'notification-bbpress'),
 				]
 			)
