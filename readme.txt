@@ -3,7 +3,7 @@ Contributors: notification, bracketspace, Kubitomakita
 Tags: notification, notify, email, mail, bbpress, forum, trigger
 Requires at least: 4.9
 Tested up to: 6.8
-Stable tag: 4.0.1
+Stable tag: 4.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -56,7 +56,7 @@ Yes! We're offering a [custom plugin development](https://bracketspace.com/custo
 
 == Changelog ==
 
-= [Next] =
+= 4.0.2 =
 * [Fixed] Merge tags not rendering values with Notification v9 due to missing property_name parameter
 
 = 4.0.1 =
