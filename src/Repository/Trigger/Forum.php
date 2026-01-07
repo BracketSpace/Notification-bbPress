@@ -111,6 +111,7 @@ abstract class Forum extends BaseTrigger
 			new MergeTag\Post\PostID(
 				[
 					'post_type' => 'forum',
+					'property_name' => 'forum',
 					'name' => __('Forum ID', 'notification-bbpress'),
 				]
 			)
@@ -120,6 +121,7 @@ abstract class Forum extends BaseTrigger
 			new MergeTag\Post\PostPermalink(
 				[
 					'post_type' => 'forum',
+					'property_name' => 'forum',
 					'name' => __('Forum URL', 'notification-bbpress'),
 				]
 			)
@@ -129,6 +131,7 @@ abstract class Forum extends BaseTrigger
 			new MergeTag\Post\PostTitle(
 				[
 					'post_type' => 'forum',
+					'property_name' => 'forum',
 					'name' => __('Forum title', 'notification-bbpress'),
 				]
 			)
@@ -138,6 +141,7 @@ abstract class Forum extends BaseTrigger
 			new MergeTag\Post\PostSlug(
 				[
 					'post_type' => 'forum',
+					'property_name' => 'forum',
 					'name' => __('Forum slug', 'notification-bbpress'),
 				]
 			)
@@ -147,6 +151,7 @@ abstract class Forum extends BaseTrigger
 			new MergeTag\Post\PostContent(
 				[
 					'post_type' => 'forum',
+					'property_name' => 'forum',
 					'name' => __('Forum description', 'notification-bbpress'),
 					'description' => __('Offtopic forum when you can post anything you want', 'notification-bbpress'),
 				]

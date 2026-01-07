@@ -56,6 +56,9 @@ Yes! We're offering a [custom plugin development](https://bracketspace.com/custo
 
 == Changelog ==
 
+= [Next] =
+* [Fixed] Merge tags not rendering values with Notification v9 due to missing property_name parameter
+
 = 4.0.1 =
 * [Fixed] Wrong condition for Reply triggers, previously, unchecked option registered the triggers.
 

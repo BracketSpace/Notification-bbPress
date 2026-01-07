@@ -114,6 +114,7 @@ class Merged extends TopicTrigger
 			new MergeTag\Post\PostID(
 				[
 					'post_type' => 'destTopic',
+					'property_name' => 'destTopic',
 					'name' => __('Destination topic ID', 'notification-bbpress'),
 					'group' => __('Destination topic', 'notification-bbpress'),
 				]
@@ -124,6 +125,7 @@ class Merged extends TopicTrigger
 			new MergeTag\Post\PostPermalink(
 				[
 					'post_type' => 'destTopic',
+					'property_name' => 'destTopic',
 					'name' => __('Destination topic URL', 'notification-bbpress'),
 					'group' => __('Destination topic', 'notification-bbpress'),
 				]
@@ -134,6 +136,7 @@ class Merged extends TopicTrigger
 			new MergeTag\Post\PostTitle(
 				[
 					'post_type' => 'destTopic',
+					'property_name' => 'destTopic',
 					'name' => __('Destination topic title', 'notification-bbpress'),
 					'group' => __('Destination topic', 'notification-bbpress'),
 				]
@@ -144,6 +147,7 @@ class Merged extends TopicTrigger
 			new MergeTag\Post\PostSlug(
 				[
 					'post_type' => 'destTopic',
+					'property_name' => 'destTopic',
 					'name' => __('Destination topic slug', 'notification-bbpress'),
 					'group' => __('Destination topic', 'notification-bbpress'),
 				]
@@ -154,6 +158,7 @@ class Merged extends TopicTrigger
 			new MergeTag\Post\PostContent(
 				[
 					'post_type' => 'destTopic',
+					'property_name' => 'destTopic',
 					'name' => __('Destination topic description', 'notification-bbpress'),
 					'description' => __('Hello, I just wanted to ask about...', 'notification-bbpress'),
 					'group' => __('Destination topic', 'notification-bbpress'),
@@ -231,6 +236,7 @@ class Merged extends TopicTrigger
 			new MergeTag\Post\PostID(
 				[
 					'post_type' => 'sourceTopic',
+					'property_name' => 'sourceTopic',
 					'name' => __('Source topic ID', 'notification-bbpress'),
 					'group' => __('Source topic', 'notification-bbpress'),
 				]
@@ -241,6 +247,7 @@ class Merged extends TopicTrigger
 			new MergeTag\Post\PostPermalink(
 				[
 					'post_type' => 'sourceTopic',
+					'property_name' => 'sourceTopic',
 					'name' => __('Source topic URL', 'notification-bbpress'),
 					'group' => __('Source topic', 'notification-bbpress'),
 				]
@@ -251,6 +258,7 @@ class Merged extends TopicTrigger
 			new MergeTag\Post\PostTitle(
 				[
 					'post_type' => 'sourceTopic',
+					'property_name' => 'sourceTopic',
 					'name' => __('Source topic title', 'notification-bbpress'),
 					'group' => __('Source topic', 'notification-bbpress'),
 				]
@@ -261,6 +269,7 @@ class Merged extends TopicTrigger
 			new MergeTag\Post\PostSlug(
 				[
 					'post_type' => 'sourceTopic',
+					'property_name' => 'sourceTopic',
 					'name' => __('Source topic slug', 'notification-bbpress'),
 					'group' => __('Source topic', 'notification-bbpress'),
 				]
@@ -271,6 +280,7 @@ class Merged extends TopicTrigger
 			new MergeTag\Post\PostContent(
 				[
 					'post_type' => 'sourceTopic',
+					'property_name' => 'sourceTopic',
 					'name' => __('Source topic description', 'notification-bbpress'),
 					'description' => __('Hello, I just wanted to ask about...', 'notification-bbpress'),
 					'group' => __('Source topic', 'notification-bbpress'),
@@ -360,6 +370,7 @@ class Merged extends TopicTrigger
 			new MergeTag\Post\PostID(
 				[
 					'post_type' => 'forum',
+					'property_name' => 'forum',
 					'name' => __('Forum ID', 'notification-bbpress'),
 				]
 			)
@@ -369,6 +380,7 @@ class Merged extends TopicTrigger
 			new MergeTag\Post\PostPermalink(
 				[
 					'post_type' => 'forum',
+					'property_name' => 'forum',
 					'name' => __('Forum URL', 'notification-bbpress'),
 				]
 			)
@@ -378,6 +390,7 @@ class Merged extends TopicTrigger
 			new MergeTag\Post\PostTitle(
 				[
 					'post_type' => 'forum',
+					'property_name' => 'forum',
 					'name' => __('Forum title', 'notification-bbpress'),
 				]
 			)
